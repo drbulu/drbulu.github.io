@@ -2,17 +2,19 @@
 layout: default
 ---
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+<!-- not efficient CSS placement, but will do for now -->
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+<!-- <style type="text/css"> .cta_centre { text-align: center; } </style> -->
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+<div class="cta-div">
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
+    <p class="cta_centre"><b>Continuous</b> learning through data:</p>
+
+    <p class="cta_centre">From <b><u>data</u></b> and <b><u>code</u></b>...</p>
+    <p class="cta_centre">To <b>insightful</b> analysis...</p>
+    <p class="cta_centre">To <b>empowering</b> visualisations...</p>
+    <p class="cta_centre">To <b>actionable</b> understanding!</p> 
+
+    <p class="cta_centre"><b>Explore!</b> <a href="{{ site.baseurl }}/drbio"><b>Me</b></a>... <a href="{{ site.baseurl }}/blog"><b>My Musings</b></a>... <a href="{{ site.baseurl }}/about"><b>This site</b></a>... </p>
+
 </div>

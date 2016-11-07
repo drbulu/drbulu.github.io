@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Setup us the blog - background
+title: Setup us the blog 1 - background
 series: getting setup
 published: true
 categories: [blogging]
