@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Setup us the blog 1 - background
-series: getting setup
+series: Setup Us the BLOG!
 published: true
 categories: [blogging]
 tags: [blogging]
@@ -30,5 +30,3 @@ This sort of content would be helpful towards fine-tuning the look and organisat
 [jmcglone.com](http://jmcglone.com/guides/github-pages/), which didn't seem quite the direction that I wanted to take, but contained some potentially useful information.  
 
 Now that I had some resources, I could formulate a strategy to get started and document my progress as I went.
-
-

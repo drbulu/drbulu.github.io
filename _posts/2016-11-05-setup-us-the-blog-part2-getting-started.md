@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Setup us the blog 2 - getting started
-series: getting setup
+series: Setup Us the BLOG!
 published: true
 categories: [blogging]
 tags: [blogging]
@@ -49,4 +49,3 @@ Note: as I suspected, things didn't quite work. I had to unpublish my old bio pa
 * https://developmentseed.org/blog/2011/09/09/jekyll-github-pages/  
 * http://stackoverflow.com/questions/10131541/how-can-i-add-a-site-search-feature-to-a-jekyll-blog  
 * https://github.com/christian-fei/Simple-Jekyll-Search  
-

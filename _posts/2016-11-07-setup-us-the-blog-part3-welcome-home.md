@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Setup us the blog 3 - welcome home
-series: getting setup
+series: Setup Us the BLOG!
 published: true
 categories: [blogging, web design, web development]
 tags: [blogging, landing page, home page, web design]
@@ -84,5 +84,3 @@ This is pretty basic. A simple ```<div class="cta-div">``` with a stack of parag
 As far as styling is concerned, it is amazing how effective a carefully premedidated poem with simple text highlighting can be.  
 
 I will settle more concretely on a landing page aesethetic and CTA upon more reflection. This, however, is a great start :). I will work more on CSS styling later when I can work out a good, simple theme.
-
-
