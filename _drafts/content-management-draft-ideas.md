@@ -42,11 +42,11 @@ tags: [blogging, landing page, home page, web design, content management]
 ## Implementation
 
 
-1. Adding drafts
+1. Adding drafts - done!
 
 https://jekyllrb.com/docs/drafts/
 
-2. Series posts
+2. Series posts - done!
 
 http://digitaldrummerj.me//blogging-on-github-part-13-creating-an-article-series/
 
