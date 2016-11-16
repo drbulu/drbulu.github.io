@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Content Management - Next topic
-published: true
+published: false
 series: Content Strategy
 categories: [web design, web development]
 tags: [web design, content management]
 ---
 
-Thinking through the principles of content generation now that the website and blog have been setup :)
+This will probably be the i) content creation tools ideas, the followed by ii) table of content section
 
 ## Introduction
 
