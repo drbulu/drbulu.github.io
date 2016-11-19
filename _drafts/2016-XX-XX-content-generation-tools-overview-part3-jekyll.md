@@ -1,29 +1,18 @@
 ---
 layout: post
-title: Content Management - Useful Tools 2
+title: Content Management - Useful Tools 3
 series: Content Strategy
 published: false
 categories: [blogging, web design, web development]
 tags: [web design, content management, resources]
 ---
 
-From manifesto to toolkit!
+More tools for content development :) !
+
+## Intro
 
 
-
-
-## Web trio tools
-This, for want of a better descriptor, is how I refer to the combination of the HTML5, CSS and JavaScript basic web development tools that control the structure, styling and functionality of web content, respectively. 
-HTML ref - w3 Schools
-
-JavaScript ref - w3 Schools
-
-CSS - w3 Schools
-
-fonts - google fonts
-
-colours - W3 schools color charts
-
+## Jekyll
 http://jekyll.tips/jekyll-cheat-sheet/
 
 https://shopify.github.io/liquid/
@@ -36,4 +25,12 @@ https://jekyllrb.com/docs/templates/#code-snippet-highlighting
 
 http://jekyllrb.com/docs/templates/#post_url
 
+Jekyll Bootstrap: http://www.jekyllbootstrap.com/usage/jekyll-quick-start.html (would be looking for integration to existing blog :) )
+
+## YAML
+http://yaml.org/
+
+https://en.wikipedia.org/wiki/YAML
+
+http://jekyllrb.com/docs/frontmatter/
 

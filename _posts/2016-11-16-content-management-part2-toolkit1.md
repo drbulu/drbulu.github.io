@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Content Management - Useful Tools 1
+title: Content Management - Useful Tools 1 - Markdown
 series: Content Strategy
 published: true
 categories: [blogging, web design, web development]
@@ -12,7 +12,8 @@ From manifesto to toolkit!
 ## Intro
 The previous post covered the principles that I hope to govern the content that I put up on this site. Now that this ground work has been laid out, the next logical step for me was to gather together some of the basic tools that I will need to rely upon in order to effectively produce said content.
 
-## Markdown 
+## Markdown
+
 ### Overview
 The Jekyll documentation website gives a [good overview](http://jekyllrb.com/docs/home/#so-what-is-jekyll-exactly) of what Jekyll is and basically how it works to generate websites from simple text files. Naturally, Jekyll can handle HTML content, however one of the benefits of the Jekyll system is its capacity to handle Markdown-formatted text files. Markdown has a good (i.e. accessible to understand) [Wikipedia page](https://en.wikipedia.org/wiki/Markdown), as always, and a decent page at [Daring Fireball](http://daringfireball.net/projects/markdown/), which is run by one of Markdown's creators. This tool basically converts specially formatted text files to HTML (or other formats) using a processing program that recognises selected combinations of basic, easy to use, keyboard characters as its syntax.
 

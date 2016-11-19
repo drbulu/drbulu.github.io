@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Content Management - Useful Tools 1
+title: Content Management - Useful Tools 4
 series: Content Strategy
 published: false
 categories: [blogging, web design, web development]
@@ -39,6 +39,6 @@ nice philosophy, not sure that how useful I find the impementation to be: https:
 more advanced integration: http://yihui.name/knitr-jekyll/2014/09/jekyll-with-knitr.html github repo https://github.com/yihui/knitr-jekyll
 
 
-
+Misc: **http://www.webaxe.org/** have a nice content layout, albeit a bit cluttered, however the tag cloud is a useful thing to try to implement. Good to remember when continuing content 
 
 
