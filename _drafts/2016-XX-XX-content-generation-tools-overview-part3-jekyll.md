@@ -43,5 +43,7 @@ Jekyll makes use of [Liquid](https://shopify.github.io/liquid/), which is basica
 
 Example: The series 
 
+custom 404 page: https://hendrixjoseph.github.io/the_elusive_custom_github_404_page/
+
 ## Conclusion
 This post isn't an exhaustive look into these subjects, so much as a useful primer to familiarise myself with the useful properties of these tools that I will make must use of.
