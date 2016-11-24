@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Dr Bulu's Bio Page
-permalink: /drbio/
 ---
 
 <p style="text-align: justify">Dr. Bulukani Mlalazi is a Research Scientist at the Centre for Tropical Crops and Biocommodities (CTCB) at Queensland University of Technology (QUT). Dr. Mlalazi completed his PhD in 2010 at QUT, under the supervision of Distinguished Professor James Dale. His PhD research aimed to define the role of the phytoene synthase (PSY) genes in the accumulation of pro-vitamin A carotenoids in bananas. His thesis contributed to an increased understanding of the role of this important gene family in regulating carotenoid production. Dr. Mlalazi is part of a team at the CTCB conducting research into banana biofortification, in collaboration with colleagues at the National Agricultural Research Organisation (NARO). His current role focusses on characterisation of bananas genetically enhanced to improve pro-vitamin A and iron content in edible tissues. Broadly, Dr. Mlalazi is interested in applying experimental and data analytical techniques to understanding the molecular and biochemical regulation of plant metabolism to produce applied biotechnology outcomes that improve nutritionally significant crops.</p>

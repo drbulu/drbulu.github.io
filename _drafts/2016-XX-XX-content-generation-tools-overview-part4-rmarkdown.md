@@ -41,4 +41,8 @@ more advanced integration: http://yihui.name/knitr-jekyll/2014/09/jekyll-with-kn
 
 Misc: **http://www.webaxe.org/** have a nice content layout, albeit a bit cluttered, however the tag cloud is a useful thing to try to implement. Good to remember when continuing content 
 
+#### Syntax highlighting
+
+http://stackoverflow.com/questions/29520780/python-highlighting-in-rmarkdown-in-rstudio
+
 
