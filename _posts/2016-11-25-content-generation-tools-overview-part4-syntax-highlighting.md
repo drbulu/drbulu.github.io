@@ -120,3 +120,6 @@ Incidentally GFM has [emoji](https://help.github.com/articles/basic-writing-and-
 
 ## Conclusion
 Syntax highlighting is something that I will be using often to showcase code, so it was good to get a feel for my options. Rouge looks like the system that I will be using, with GFM as a backup option.
+
+## Update: 
+Needed to configure Jekyll for [emojis](https://github.com/jekyll/jemoji)!
