@@ -29,7 +29,7 @@ I liken it to how a mail merge function extracts specific parts from an informat
 
 Basically, Jekyll uses Liquid and YAML to faithfully write and construct the boring and tedious parts of the website so that the user (you) can focus on writing interesting, unique content in a reproducible and manageable way. For example, writing Markdown is easier than having to write HTML and wrap content properly in [HTML elements](http://www.w3schools.com/html/html_elements.asp) (links are a big one for me), but one can still "HTML it up" (sic) whenever one wants or needs to.
 
-The best motivating example for me was the [**setup of blog series**]({{ site.baseurl }}{% post_url 2016-11-08-setup-us-the-blog-part4-in-series %}). The constant effort of updating a series table of contents every time I write a post to add to an existing (or new) series has been replaced by a set of recyclable tools.
+The best motivating example for me was the setup of the [**blog series**]({{ site.baseurl }}{% post_url 2016-11-08-setup-us-the-blog-part4-in-series %}) panel layout. The constant effort of updating a series table of contents every time I write a post to add to an existing (or new) series has been replaced by a set of recyclable tools.
 
 ## Conclusion
 This post isn't an exhaustive look into these subjects, so much as a useful primer to familiarise myself with the useful properties of these tools that I will make must use of. It has been an interesting look into how these important pieces work together to help me effect the production and management of my site's content. 
