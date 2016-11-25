@@ -161,3 +161,32 @@ http://dev.mysql.com/doc/refman/5.7/en/backup-and-recovery.html
 grep: /etc/mysql/: No such file or directory
 
 error tripped up install
+
+
+## Next post(s)
+
+## mysql tutorials
+http://www.tutorialspoint.com/mysql/
+www.w3schools.com/sql
+
+https://www.tutorialspoint.com/r/r_database.htm
+
+https://www.r-bloggers.com/mysql-and-r/
+https://www.r-bloggers.com/accessing-mysql-through-r/
+
+
+## sqlite
+http://swcarpentry.github.io/sql-novice-survey/
+http://www.datacarpentry.org/sql-ecology-lesson/
+http://www.datacarpentry.org/R-ecology-lesson/06-r-and-sql.html
+
+# SQL DF
+https://www.r-bloggers.com/make-r-speak-sql-with-sqldf/
+https://www.r-bloggers.com/manipulating-data-frames-using-sqldf-a-brief-overview/
+
+## ERD software
+
+
+## good resources
+http://software-carpentry.org/lessons/
+http://www.datacarpentry.org/lessons/

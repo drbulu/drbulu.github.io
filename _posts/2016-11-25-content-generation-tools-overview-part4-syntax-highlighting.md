@@ -88,7 +88,7 @@ greetConsole <- function(repeatCount){
 ## Github flavoured markdown (GFM)
 Somehow this escaped my notice in the second post of this series on [**Markdown**]({{ site.baseurl }}{% post_url 2016-11-16-content-management-part2-toolkit1 %}). Basically, Github seems to have their own [spin](https://help.github.com/articles/basic-writing-and-formatting-syntax/) on Markdown. GFM has similar [syntax highlighting](https://help.github.com/articles/creating-and-highlighting-code-blocks/) formatting to RMarkdown, and there is a list of GFM [language code abbreviations](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml). Interestingly, I'm not sure how to specify line numbers.
 
-This is the same code example used previously in this post with GFM-formatted syntax highlighting. Note, I had to encase the code in a [<pre>](http://www.w3schools.com/tags/tag_pre.asp) (preformatted text) tag, to get the right formatting. Alternatively I could have used the [html symbol (&#96)](https://en.wikipedia.org/wiki/Grave_accent) for the backtick.
+This is the same code example used previously in this post with GFM-formatted syntax highlighting. Note, I had to encase the code in a [<pre>](http://www.w3schools.com/tags/tag_pre.asp) (preformatted text) tag, to get the right formatting. Alternatively I could have used the [html symbol (&#96&#59;)](https://en.wikipedia.org/wiki/Grave_accent) for the backtick.
 
 <pre>
 ``` r
@@ -116,6 +116,7 @@ greetConsole <- function(repeatCount){
 
 GFM doesn't seem to have [inline](http://stackoverflow.com/questions/23226224/inline-code-syntax-highlighting-in-github-markdown#25058886) syntax highlighting as well, but since Pandoc does, any syntax highlighting in RMarkdown will be processed before Jekyll gets a hold of it. That said, GFM seems to have basic inline code highlighting as long as no language is specified e.g. &#96;&#96;&#96; hello&#96;&#96;&#96; evaluates to ``` hello```.
 
+Incidentally GFM has [emoji](https://help.github.com/articles/basic-writing-and-formatting-syntax/#using-emoji) integration in the format :EMOJICODE:, and here are ["all the emojis"](http://www.webpagefx.com/tools/emoji-cheat-sheet/) :grinning:. They don't render locally, but are still good to have :smile:.
 
 ## Conclusion
 Syntax highlighting is something that I will be using often to showcase code, so it was good to get a feel for my options. Rouge looks like the system that I will be using, with GFM as a backup option.

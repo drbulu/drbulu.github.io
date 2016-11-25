@@ -13,6 +13,10 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 
     <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+
+    <!-- Incorporate math symbol rendering functionality as specifified in math_symbols.html -->
+    {% if page.math_symbols %} {% include math_symbols.html %} {% endif %}
+
   </head>
 
   <body>
