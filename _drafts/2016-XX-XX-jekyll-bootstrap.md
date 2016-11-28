@@ -1,3 +1,0 @@
-
-## Other reference...
-Jekyll Bootstrap: http://www.jekyllbootstrap.com/usage/jekyll-quick-start.html (would be looking for integration to existing blog :) )
