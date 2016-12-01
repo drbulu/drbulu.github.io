@@ -39,6 +39,9 @@ Documentation is available for the languageID codes (short names) supported by [
 
 * **Unix**: Unix shell script (shell), Unix shell console (shell_session).
 
+<b style="color:red;">UPDATE:</b> 2016-12-01 (more formats for reference)
+* **Config**: INI configuration format (ini), general configuration files (conf, config, configuration), ```.properties``` config files for Java (properties), Gradle: A powerful build system for the JVM (gradle). 
+
 ### Rouge Example
 Below is a basic example of code written in the R lanaguage. This is a simple function in R to display (print) the phrase "hello console" onto the console repeatedly depending on the numerical value of the repeatCount variable. The code is nonsense but valid, but I wanted something more substantial than "hello world".
 

@@ -20,7 +20,7 @@ dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/#repo-qg-apt-starting-and-stoppi
 
 http://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/#repo-qg-apt-starting-and-stopping-server
 
-### Control MySQL service
+### MySQL service control
 
 #### Basic comands
 {% highlight shell %}
@@ -49,17 +49,29 @@ shell> sudo systemctl stop mysql
 shell> sudo systemctl restart mysql
 {% endhighlight %}
 
-* Logging in from commandline
+### MySQL terminal access
 
-    * login as root (admin) mysql user: syntax also works for non-root (can omit -h hostName for localhost?)
+* Logging in from commandline: user login syntax
 
-mysql -u root -p   
- 
-mysql -u root -ppasswordString
+{% highlight shell %}
+# secure - prompt to add hidden password on next line
+# "-h hostName" can be omitted for localhost
+shell> mysql -h hostName -u userName -p
+# insecure - password visible (note: no space afer "-p")
+shell> mysql -h hostName -u userName -ppasswordString
+{% endhighlight %} 
 
-Note: If you sudo the following command, it could result in vivid world of pain!
+* login as root (admin) mysql user:
 
+<b style="color:red;">Note:</b> If you **```sudo```** the following command... it could result in vivid world of pain!
 
+http://stackoverflow.com/questions/37239970/connect-to-mysql-server-without-sudo
+http://stackoverflow.com/questions/28068155/access-denied-for-user-rootlocalhost-using-password-yes-after-new-instal
+Interesting - https://serverpilot.io/community/articles/how-to-access-mysql-with-the-mysql-root-user.html
+
+{% highlight shell %}
+shell> mysql -u root -p   
+{% endhighlight %} 
 
 ## Create and setup database ..............................................
 
