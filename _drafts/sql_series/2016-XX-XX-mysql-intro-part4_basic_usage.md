@@ -15,6 +15,10 @@ https://dev.mysql.com/doc/employee/en/employees-installation.html
 
 source location: https://github.com/datacharmer/test_db
 
+tutorial: http://dev.mysql.com/doc/refman/5.7/en/tutorial.html
+
+
+list of functions: http://dev.mysql.com/doc/refman/5.7/en/functions.html
 
 ## Sample database
 
@@ -32,6 +36,28 @@ https://www.roalddahl.com/roald-dahl/stories/1980s/the-bfg
 
 http://dev.mysql.com/doc/refman/5.7/en/backup-and-recovery.html
 
+
+
+6. Show table columns
+http://stackoverflow.com/questions/1580450/how-do-i-list-all-the-columns-in-a-table#1580461
+
+
+
+6. Importing database from script
+http://stackoverflow.com/questions/17666249/how-to-import-an-sql-file-using-the-command-line-in-mysql#17666279
+
+https://www.cyberciti.biz/faq/import-mysql-dumpfile-sql-datafile-into-my-database/
+
+must create db first (and setup user firsat)
+
+{% highlight sql %}
+shell> mysql -u username -p database_name < file.sql    Note: full path preferred
+{% endhighlight %}
+
+7. exporting data
+https://dev.mysql.com/doc/refman/5.7/en/select-into.html
+
+http://stackoverflow.com/questions/5164033/export-a-mysql-database-to-sqlite-database#13871628
 
 ## Next post(s)
 

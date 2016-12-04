@@ -22,13 +22,27 @@ https://www.kaggle.com/datasets
 
 https://en.wikipedia.org/wiki/Open_data#Major_sources
 
+http://ww2.amstat.org/publications/jse/jse_data_archive.htm
+
+https://www.icpsr.umich.edu/icpsrweb/ICPSR/index.jsp
+
 http://faostat3.fao.org/home/E
 
 http://data.worldbank.org/
 
 https://www.sec.gov/edgar/searchedgar/companysearch.html
 
+* Network data
 
+http://gwa.ewi.tudelft.nl/datasets/gwa-t-12-bitbrains
+
+http://ita.ee.lbl.gov/html/traces.html
+
+http://snap.stanford.edu/data/
+
+Marketing: http://r-marketing.r-forge.r-project.org/data.html
+
+Geospatial: http://www.asdar-book.org/courses.php
 
 ## Bible
 https://github.com/scrollmapper/bible_databases
