@@ -47,7 +47,7 @@ shell> sudo systemctl restart mysql
 
 #### 1) Connecting to server 
 
-From [commandline](http://dev.mysql.com/doc/refman/5.7/en/connecting-disconnecting.html): user login syntax
+From [command line](http://dev.mysql.com/doc/refman/5.7/en/connecting-disconnecting.html): user login syntax
 
 {% highlight shell %}
 # Note: "-h hostName" can be omitted for localhost
@@ -59,7 +59,7 @@ shell> mysql -h hostName -u userName -ppasswordString
 
 #### 2) login as root (admin) mysql user:
 
-<b style="color:red;">Note:</b> If you **```sudo```** the following command... it could result in vivid world of pain! [This](http://stackoverflow.com/questions/28068155/) is the issue I had, but there seems to be potential fixes discussed [here](http://stackoverflow.com/questions/37239970/) and [here](https://serverpilot.io/community/articles/how-to-access-mysql-with-the-mysql-root-user.html). These solutions might be suitable for a personal setting, but for production scenarios check out the instruction [here](http://dev.mysql.com/doc/refman/5.7/en/mysql-secure-installation.html) (and [here](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04#step-2-install-mysql-to-manage-site-data)).
+<b style="color:red;">Note:</b> If you **```sudo```** the following command... it could result in a vivid world of pain! [This](http://stackoverflow.com/questions/28068155/) is the issue I had, but there seems to be potential fixes discussed [here](http://stackoverflow.com/questions/37239970/) and [here](https://serverpilot.io/community/articles/how-to-access-mysql-with-the-mysql-root-user.html). These solutions might be suitable for a personal setting, but for production scenarios check out the instruction [here](http://dev.mysql.com/doc/refman/5.7/en/mysql-secure-installation.html) (and [here](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04#step-2-install-mysql-to-manage-site-data)).
 
 {% highlight shell %}
 shell> mysql -u root -p   

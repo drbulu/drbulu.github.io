@@ -9,6 +9,16 @@ tags: [SQL, MySQL, relational database, rdbms]
 
 ## Basic usage
 
+Previously, I [installed]( {{ site.baseurl }}{% post_url 2016-12-04-mysql-intro-part3-basic-admin %} ) 
+
+Good guide for using : http://dev.mysql.com/doc/refman/5.7/en/tutorial.html
+
+Source of test databases: http://dev.mysql.com/doc/index-other.html
+
+Database of choice: http://dev.mysql.com/doc/sakila/en/
+
+Topic for later: database design: https://dev.mysql.com/doc/workbench/en/wb-data-modeling.html
+
 ## MySQL basic usage - install test data
 
 https://dev.mysql.com/doc/employee/en/employees-installation.html
@@ -16,7 +26,6 @@ https://dev.mysql.com/doc/employee/en/employees-installation.html
 source location: https://github.com/datacharmer/test_db
 
 tutorial: http://dev.mysql.com/doc/refman/5.7/en/tutorial.html
-
 
 list of functions: http://dev.mysql.com/doc/refman/5.7/en/functions.html
 
@@ -37,6 +46,16 @@ https://www.roalddahl.com/roald-dahl/stories/1980s/the-bfg
 http://dev.mysql.com/doc/refman/5.7/en/backup-and-recovery.html
 
 
+{% highlight shell %}
+shell> mysql -u root -p
+{% endhighlight %}
+
+{% highlight sql %}
+mysql> SOURCE C:/temp/sakila-db/sakila-schema.sql;
+mysql> SOURCE C:/temp/sakila-db/sakila-data.sql;
+{% endhighlight %}
+
+Check out the database schema [fileName](Topic for later: database design: https://dev.mysql.com/doc/workbench/en/wb-data-modeling.html) in MySQL Workbench
 
 6. Show table columns
 http://stackoverflow.com/questions/1580450/how-do-i-list-all-the-columns-in-a-table#1580461
