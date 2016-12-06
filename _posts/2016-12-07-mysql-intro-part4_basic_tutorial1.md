@@ -43,7 +43,7 @@ The MySQL root user is powerful, and as such **should** be invoked with care! As
 
 > "With great power comes great responsibility."
 
-Thus we have our user, [sophieG](https://en.wikipedia.org/wiki/The_BFG), through whom we will be commence our "datadventure" (sic). Now to [create]({{ site.baseurl }}{% post_url 2016-12-04-mysql-intro-part3-basic-admin#create-users %}) and [empower]({{ site.baseurl }}{% post_url 2016-12-04-mysql-intro-part3-basic-admin#assign-user-privileges-to-a-specific-database %}) or intrepid user :smile:!
+Thus we have our user, [sophieG](https://en.wikipedia.org/wiki/The_BFG), through whom we will be commence our "datadventure" (sic). Now to [create]({{ site.baseurl }}{% post_url 2016-12-04-mysql-intro-part3-basic-admin %}/#create-users) and [empower]({{ site.baseurl }}{% post_url 2016-12-04-mysql-intro-part3-basic-admin %}#assign-user-privileges-to-a-specific-database) or intrepid user :smile:!
 
 {% highlight sql %}
 mysql> CREATE USER 'sophieG'@'localhost' IDENTIFIED BY '2whizpoppingFrobscottle*!';
