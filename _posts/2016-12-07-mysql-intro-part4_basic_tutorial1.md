@@ -11,7 +11,7 @@ tags: [SQL, MySQL, relational database, rdbms, tutorial]
 
 Previously, I [aquainted myself]( {{ site.baseurl }}{% post_url 2016-12-04-mysql-intro-part3-basic-admin %} ) with managing my recently installed MySQL environment. Now to some of the fun stuff... exploring the power and utility of this wonderful tool :smile:! 
 
-The [general tutorial](http://dev.mysql.com/doc/refman/5.7/en/tutorial.html) lays down the ground work for me to start looking into data, but there are many indepth guides including ones at [w3schools](www.w3schools.com/sql) and [tutorialspoint](http://www.tutorialspoint.com/mysql/). Both are quite detailed, and I will be looking to them for inspiration as I learn how to use MySQL. The **w3schools** tutorial is particularly useful due to its interactivity, because users can try out SQL statements via their online interface. Additionally, the list of functions [here](http://dev.mysql.com/doc/refman/5.7/en/functions.html) is another good potential resource.
+The [general tutorial](http://dev.mysql.com/doc/refman/5.7/en/tutorial.html) lays down the ground work for me to start looking into data, but there are many indepth guides including ones at [w3schools](http://www.w3schools.com/sql) and [tutorialspoint](http://www.tutorialspoint.com/mysql/). Both are quite detailed, and I will be looking to them for inspiration as I learn how to use MySQL. The **w3schools** tutorial is particularly useful due to its interactivity, because users can try out SQL statements via their online interface. Additionally, the list of functions [here](http://dev.mysql.com/doc/refman/5.7/en/functions.html) is another good potential resource.
 
 There are a number of [test databases](http://dev.mysql.com/doc/index-other.html) that we could use, but we will be exploring the **Sakila** database through its [Sakila tutorial](http://dev.mysql.com/doc/sakila/en/) in combination with other resources such as the abovementioned. The source files contain instructions for database creation, and include the Sakila database design schema for use with [MySQL workbench](https://dev.mysql.com/doc/workbench/en/wb-data-modeling.html). [Database design](https://en.wikipedia.org/wiki/Database_design), including [ERD modelling](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model), is an important topic that I hope to explore further. Solid databases, are well designed ones :smile:!
 
@@ -29,6 +29,7 @@ shell> mysql -u root -p
 mysql> SOURCE C:/temp/sakila-db/sakila-schema.sql;
 # import data to populate database
 mysql> SOURCE C:/temp/sakila-db/sakila-data.sql;
+# Note: replace "C:/temp/sakila-db/" with whatever your path is :)
 {% endhighlight %}
 
 {% highlight sql %}

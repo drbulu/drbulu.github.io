@@ -8,7 +8,7 @@ Budding Data Scientist: Research Scientist and Data Enthusiast.
 
 ### Brief Synopsis
 
-A Research Scientist by background, I am a programming enthusiast who loves to explore and understand complext data. I work a lot with the [R programming language](https://www.r-project.org/) for data analysis, but I have a multitude of programming, data visualisation and design skills that I am currently growing.  
+A Research Scientist by background, I am a programming enthusiast who loves to explore and understand complex data. I work a lot with the [R programming language](https://www.r-project.org/) for data analysis, but I have a multitude of programming, data visualisation and design skills that I am currently growing.  
 
 For more info, please feel free to visit my [bio page](https://drbulu.github.io//drbio).
 
