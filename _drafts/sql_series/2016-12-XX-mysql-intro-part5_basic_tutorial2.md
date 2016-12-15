@@ -49,6 +49,8 @@ For completeness, I have organised some of these quite useful resources in a ref
 
 ... back to our [intrepid explorer]( {{ site.baseurl }}{% post_url 2016-12-07-mysql-intro-part4_basic_tutorial1 %}#setup-tutorial-user )
 
+<b style="color:red;">Note</b>: To copy and paste the multi-line statements below, remove the **```->```** character, which indicates the continuation of a single statement across multiple lines to avoid a syntax error.
+
 {% highlight shell %}
 # localhost connection
 shell> mysql -u sophieG -p sakila
@@ -119,7 +121,9 @@ mysql> DESC film;
 13 rows in set (0.00 sec)
 {% endhighlight %}
 
-#### b) count rows
+#### b) counting rows
+
+This is pretty simple :smile:
 
 {% highlight sql %}
 mysql> SELECT COUNT(*) FROM film;
@@ -144,12 +148,11 @@ mysql> SELECT COUNT(*) AS 'film count' FROM film;
 1 row in set (0.00 sec)
 {% endhighlight %}
 
-#### c) count columns
-http://stackoverflow.com/questions/10492164/how-do-i-count-columns-of-a-table
+#### c) counting columns
 
-this solution requires some understanding of this database:
-https://dev.mysql.com/doc/refman/5.7/en/information-schema.html
-https://dev.mysql.com/doc/refman/5.7/en/innodb-information-schema.html
+Note quite so simple :wink:. Found a viable solution [here](http://stackoverflow.com/questions/10492164/how-do-i-count-columns-of-a-table). 
+
+Note: This solution requires some understanding of the **```information-schema```** [meta database](https://dev.mysql.com/doc/refman/5.7/en/information-schema.html) ([here](https://dev.mysql.com/doc/refman/5.7/en/innodb-information-schema.html) for the innodb engine ).
 
 {% highlight sql %}
 # vote aliases for cleaner results!
@@ -167,9 +170,11 @@ mysql> SELECT count(*) AS 'column count'
 
 #### d) Making head and tail
 
+This emulates the **```head()```** and **```tail()```** commands that I use in [R](https://stat.ethz.ch/R-manual/R-devel/library/utils/html/head.html) or at the shell([head](https://en.wikipedia.org/wiki/Head_(Unix)) or [tail](https://en.wikipedia.org/wiki/Tail_(Unix)) ) to get the first (top) or last (bottom) **n** entries (5 in this case) in a table.
+
 ##### i) head
 
-Example query
+Getting the first **n** entries is pretty simple:
 
 {% highlight sql%}
 mysql> select * from film limit 5;
@@ -184,6 +189,8 @@ mysql> select * from film limit 5;
 +---------+------------------+-----------------------------------------------------------------------------------------------------------------------+--------------+-------------+----------------------+-----------------+-------------+--------+------------------+--------+----------------------------------+---------------------+
 5 rows in set (0.00 sec)
 {% endhighlight %}
+
+Naturally, you can also select a subset of the columns to view (ordered as listed):
 
 {% highlight sql%}
 # note compare with previous statement to checkout the change in column order :)
@@ -202,19 +209,16 @@ mysql> SELECT film_id, title, release_year, length, rental_rate, rating FROM fil
 
 ##### ii) tail
 
-http://stackoverflow.com/questions/118144/
-http://stackoverflow.com/questions/12125904/
+Getting the last **n** entries (5 in this case) in a table. This isn't quite as simple as selecting the first entries. The best way to achieve this seems to involve the use of [sub queries](http://stackoverflow.com/questions/12125904/) (ee [here](http://stackoverflow.com/questions/118144/) also). There seems to be a solution for tables lacking an **id** column [here](http://stackoverflow.com/questions/3779180/), which was adapted from another situation (possibly of interest to look into later). However, the impression that I get is that attempting this procedure (tail) on tables without unique **id** columns is ill advised.
 
-Not great without an ID: http://stackoverflow.com/questions/3779180/
-
-Picked the first 2 columns, **```film_id```** and **```title```** to focus on the output.
+For this example, I am selecting only the first 2 columns, **```film_id```** and **```title```**, in the outer **```SELECT```** statement for clarity, but this naturally works when including all columns (**```*```**).
 
 {% highlight sql%}
 mysql> SELECT film_id, title 
     -> FROM ( 
     ->     SELECT * FROM film 
     ->     ORDER BY film_id DESC LIMIT 5 
-    -> ) sub;
+    -> ) subQuery;
 +---------+-------------------+
 | film_id | title             |
 +---------+-------------------+
@@ -227,14 +231,14 @@ mysql> SELECT film_id, title
 5 rows in set (0.00 sec)
 {% endhighlight %}
 
-reorder them!
+reorder them to look like a **```tail()```** result :wink:
 
 {% highlight sql%}
 mysql> SELECT film_id, title 
     -> FROM ( 
     ->     SELECT * FROM film 
     ->     ORDER BY film_id DESC LIMIT 5 
-    -> ) sub ORDER BY film_id;        
+    -> ) subQuery ORDER BY film_id;        
 +---------+-------------------+
 | film_id | title             |
 +---------+-------------------+
@@ -245,6 +249,40 @@ mysql> SELECT film_id, title
 |    1000 | ZORRO ARK         |
 +---------+-------------------+
 5 rows in set (0.00 sec)
+{% endhighlight %}
+
+#### Alias notes
+
+Previous sections [counting rows](#counting-rows) and [tail](#tail) used aliases
+
+http://www.w3schools.com/sql/sql_alias.asp
+
+some interesting notes on [alias usage](https://dev.mysql.com/doc/refman/5.7/en/problems-with-alias.html) logic and restrictions.
+
+Note: Sub queries, in the **```FROM```** clause, require an alias (in this case **```subQuery```**) to execute without error:
+
+{% highlight sql%}
+# i.e. this query won't work 
+mysql> SELECT film_id, title 
+    -> FROM (
+    ->     SELECT * FROM film 
+    ->     ORDER BY film_id DESC LIMIT 5
+    -> );
+ERROR 1248 (42000): Every derived table must have its own alias
+
+# but this will (explicit alias)
+mysql> SELECT film_id, title 
+    -> FROM (
+    ->     SELECT * FROM film 
+    ->     ORDER BY film_id DESC LIMIT 5
+    -> ) AS subQuery;
+
+# as will this (implicit alias)
+mysql> SELECT film_id, title 
+    -> FROM (
+    ->     SELECT * FROM film 
+    ->     ORDER BY film_id DESC LIMIT 5
+    -> ) subQuery;
 {% endhighlight %}
 
 ## Conclusion
