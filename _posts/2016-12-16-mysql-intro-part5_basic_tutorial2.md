@@ -47,12 +47,12 @@ For completeness, I have organised some of these quite useful resources in a ref
 
 ## Data Exploration:
 
-... back to our [intrepid explorer]( {{ site.baseurl }}{% post_url 2016-12-07-mysql-intro-part4_basic_tutorial1 %}#setup-tutorial-user )
+Now we call upon our back to our [intrepid explorer]( {{ site.baseurl }}{% post_url 2016-12-07-mysql-intro-part4_basic_tutorial1 %}#setup-tutorial-user ) to facilitate our exploration of the characteristics of the **```sakila```** database.
 
 <b style="color:red;">Note</b>: To copy and paste the multi-line statements below, remove the **```->```** character, which indicates the continuation of a single statement across multiple lines to avoid a syntax error.
 
 {% highlight shell %}
-# localhost connection
+/* localhost connection */
 shell> mysql -u sophieG -p sakila
 Enter password: **********
 {% endhighlight %}
@@ -93,11 +93,17 @@ mysql> SHOW TABLES;
 
 ### Basic table summary
 
-Picked the **```film```** table to serve as an example of how to get a picture of the information contained therein.
+To get an idea of how to get a snapshot of an individual table's, I picked the **```film```** table to serve as a motivating example.
 
 #### a) Describe table
 
-This instruction describes the columns in a dataset ...
+This instruction summarises the defining characteristics of a table. The most interesting information initially to get a feel for a table would be the **```Field```** and **```Type```** columns. This is from the basic perspective of answering the questions:
+
+* "What are the columns of this table **called**?"
+
+* "What **kind** of information do these columns contain?"
+
+The other information in this summary, to me, seems more useful in subsequent table content management.
 
 {% highlight sql %}
 mysql> DESC film;
@@ -150,12 +156,10 @@ mysql> SELECT COUNT(*) AS 'film count' FROM film;
 
 #### c) counting columns
 
-Note quite so simple :wink:. Found a viable solution [here](http://stackoverflow.com/questions/10492164/how-do-i-count-columns-of-a-table). 
-
-Note: This solution requires some understanding of the **```information-schema```** [meta database](https://dev.mysql.com/doc/refman/5.7/en/information-schema.html) ([here](https://dev.mysql.com/doc/refman/5.7/en/innodb-information-schema.html) for the innodb engine ).
+Note quite so simple :wink:. Found a viable solution [here](http://stackoverflow.com/questions/10492164/how-do-i-count-columns-of-a-table). **Note:** This solution requires some understanding of the **```information-schema```** [meta database](https://dev.mysql.com/doc/refman/5.7/en/information-schema.html) ([here](https://dev.mysql.com/doc/refman/5.7/en/innodb-information-schema.html) for the innodb engine implementation).
 
 {% highlight sql %}
-# vote aliases for cleaner results!
+-- vote aliases for cleaner results!
 mysql> SELECT count(*) AS 'column count'
     -> FROM information_schema.columns
     -> WHERE table_schema = 'sakila'
@@ -170,7 +174,7 @@ mysql> SELECT count(*) AS 'column count'
 
 #### d) Making head and tail
 
-This emulates the **```head()```** and **```tail()```** commands that I use in [R](https://stat.ethz.ch/R-manual/R-devel/library/utils/html/head.html) or at the shell([head](https://en.wikipedia.org/wiki/Head_(Unix)) or [tail](https://en.wikipedia.org/wiki/Tail_(Unix)) ) to get the first (top) or last (bottom) **n** entries (5 in this case) in a table.
+This emulates the **```head()```** and **```tail()```** commands that I use in [R](https://stat.ethz.ch/R-manual/R-devel/library/utils/html/head.html) or at the shell ([head](https://en.wikipedia.org/wiki/Head_(Unix)) or [tail](https://en.wikipedia.org/wiki/Tail_(Unix))) to display the first (top) or last (bottom) **n** entries (5 in this case) of a table.
 
 ##### i) head
 
@@ -190,10 +194,10 @@ mysql> select * from film limit 5;
 5 rows in set (0.00 sec)
 {% endhighlight %}
 
-Naturally, you can also select a subset of the columns to view (ordered as listed):
+Naturally, you can also select a subset of the columns to view, ordered as per the select statement:
 
 {% highlight sql%}
-# note compare with previous statement to checkout the change in column order :)
+-- note compare with previous statement to checkout the change in column order :)
 mysql> SELECT film_id, title, release_year, length, rental_rate, rating FROM film LIMIT 5;
 +---------+------------------+--------------+--------+-------------+--------+
 | film_id | title            | release_year | length | rental_rate | rating |
@@ -209,7 +213,7 @@ mysql> SELECT film_id, title, release_year, length, rental_rate, rating FROM fil
 
 ##### ii) tail
 
-Getting the last **n** entries (5 in this case) in a table. This isn't quite as simple as selecting the first entries. The best way to achieve this seems to involve the use of [sub queries](http://stackoverflow.com/questions/12125904/) (ee [here](http://stackoverflow.com/questions/118144/) also). There seems to be a solution for tables lacking an **id** column [here](http://stackoverflow.com/questions/3779180/), which was adapted from another situation (possibly of interest to look into later). However, the impression that I get is that attempting this procedure (tail) on tables without unique **id** columns is ill advised.
+Getting the last **n** entries (5 in this case) in a table. This isn't quite as simple as selecting the first entries. The best way to achieve this seems to involve the use of [sub queries](http://stackoverflow.com/questions/12125904/) (ee [here](http://stackoverflow.com/questions/118144/) also). There seems to be a solution for tables lacking an **id** column [here](http://stackoverflow.com/questions/3779180/), which was adapted from another situation (possibly of interest to look into later). However, the impression that I get is that attempting this procedure (tail) on tables without unique **id** columns is fraught with peril.
 
 For this example, I am selecting only the first 2 columns, **```film_id```** and **```title```**, in the outer **```SELECT```** statement for clarity, but this naturally works when including all columns (**```*```**).
 
@@ -231,7 +235,7 @@ mysql> SELECT film_id, title
 5 rows in set (0.00 sec)
 {% endhighlight %}
 
-reorder them to look like a **```tail()```** result :wink:
+reorder them to look like a [bona fide](https://en.wikipedia.org/wiki/Good_faith) **```tail()```** result :wink:
 
 {% highlight sql%}
 mysql> SELECT film_id, title 
@@ -251,18 +255,14 @@ mysql> SELECT film_id, title
 5 rows in set (0.00 sec)
 {% endhighlight %}
 
-#### Alias notes
+#### Aliases
 
-Previous sections [counting rows](#counting-rows) and [tail](#tail) used aliases
+Previous sections focusing on [counting rows](#b-counting-rows), [counting columns](#c-counting-columns) and [tail](#ii-tail) made use of [aliases](http://www.w3schools.com/sql/sql_alias.asp). The MySQL docs have some interesting notes on [alias usage](https://dev.mysql.com/doc/refman/5.7/en/problems-with-alias.html) logic and restrictions, which might come in handy when I next come unstuck.
 
-http://www.w3schools.com/sql/sql_alias.asp
-
-some interesting notes on [alias usage](https://dev.mysql.com/doc/refman/5.7/en/problems-with-alias.html) logic and restrictions.
-
-Note: Sub queries, in the **```FROM```** clause, require an alias (in this case **```subQuery```**) to execute without error:
+<b style="color:red;">Note:</b> Sub queries, in the **```FROM```** clause, require an alias (in this case **```subQuery```**) to execute without error:
 
 {% highlight sql%}
-# i.e. this query won't work 
+/* i.e. this query will no't work */
 mysql> SELECT film_id, title 
     -> FROM (
     ->     SELECT * FROM film 
@@ -270,14 +270,14 @@ mysql> SELECT film_id, title
     -> );
 ERROR 1248 (42000): Every derived table must have its own alias
 
-# but this will (explicit alias)
+-- but this will (explicit alias)
 mysql> SELECT film_id, title 
     -> FROM (
     ->     SELECT * FROM film 
     ->     ORDER BY film_id DESC LIMIT 5
     -> ) AS subQuery;
 
-# as will this (implicit alias)
+-- as will this (implicit alias)
 mysql> SELECT film_id, title 
     -> FROM (
     ->     SELECT * FROM film 
@@ -287,7 +287,7 @@ mysql> SELECT film_id, title
 
 ## Conclusion
 
-... make new conclusion, and move to the next tutorial!
+In this section, we have established some good tools to get a feel for the contents of a database. In the next tutorial we will try a different way to summarise this database :smile:.
 
 ## Resource list
 

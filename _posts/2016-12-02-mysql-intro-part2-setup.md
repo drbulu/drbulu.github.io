@@ -107,7 +107,7 @@ shell> sudo apt-get install unixodbc-dev unixodbc-bin unixodbc
 * _**b)**_ [extract files](http://askubuntu.com/questions/25347/what-command-do-i-need-to-unzip-extract-a-tar-gz-file#25348) from the compressed archive.
 
 {% highlight shell %}
-tar -xvzf mysql-connector-odbc-5.3.6-linux-ubuntu15.10-x86-64bit.tar.gz
+shell> tar -xvzf mysql-connector-odbc-5.3.6-linux-ubuntu15.10-x86-64bit.tar.gz
 {% endhighlight %}
 
 * _**c)**_ From the terminal, **```cd```** into the main directory of the archive extracted in _**b)**_.

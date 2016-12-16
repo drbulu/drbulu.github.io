@@ -25,15 +25,15 @@ shell> mysql -u root -p
 {% endhighlight %}
 
 {% highlight sql %}
-# import database design schema
+-- import database design schema
 mysql> SOURCE C:/temp/sakila-db/sakila-schema.sql;
-# import data to populate database
+-- import data to populate database
 mysql> SOURCE C:/temp/sakila-db/sakila-data.sql;
-# Note: replace "C:/temp/sakila-db/" with whatever your path is :)
+-- Note: replace "C:/temp/sakila-db/" with whatever your path is :)
 {% endhighlight %}
 
 {% highlight sql %}
-# having already connected to Sakila database..
+-- having already connected to Sakila database..
 mysql> SHOW TABLES;
 mysql> SELECT COUNT(*) FROM film;
 {% endhighlight %}
@@ -56,4 +56,3 @@ Once complete, we need to login as our new user and check the correct provision 
 ## Conclusion
 
 Once successful, we can move to the next step :smile:.
-

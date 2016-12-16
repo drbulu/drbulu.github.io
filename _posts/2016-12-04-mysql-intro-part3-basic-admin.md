@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MySQL basic admin
+title: MySQL - Basic Admin
 published: true
 series: MySQL intro
 categories: [data management, database]
@@ -68,7 +68,7 @@ shell> mysql -u root -p
 #### 3) disconnecting
 {% highlight sql %}
 mysql> QUIT
-# or
+-- or
 mysql> \q
 {% endhighlight %}
 
@@ -78,7 +78,7 @@ From this [tutorial](http://dev.mysql.com/doc/refman/5.7/en/tutorial.html):
 
 {% highlight sql %}
 mysql> mysql --help
-# or
+-- or
 mysql> \h
 {% endhighlight %}
 
@@ -98,7 +98,7 @@ Cancel the execution of an [unexecuted](http://stackoverflow.com/questions/88114
 
 {% highlight sql %}
 mysql> \c
-# or
+-- or
 mysql> clear
 {% endhighlight %}
 
@@ -137,7 +137,7 @@ More info [here](https://dev.mysql.com/doc/refman/5.7/en/drop-database.html):
 
 {% highlight sql %}
 mysql> DROP DATABASE databaseName;
-# or
+-- or
 mysql> DROP SCHEMA databaseName;
 {% endhighlight %}
 
@@ -147,16 +147,16 @@ mysql> DROP SCHEMA databaseName;
 
 {% highlight sql %}
 mysql> SELECT host, user, password FROM mysql.user;
-# describe structure of user table
+-- describe structure of user table
 mysql> DESC mysql.user;
-# or
+-- or
 mysql> DESCRIBE mysql.user;
 {% endhighlight %}
 
 * Show current user:
 
 {% highlight sql %}
-# Show account associated with the current session
+/* Show account associated with the current session */
 mysql> CURRENT_USER()
 {% endhighlight %}
 
@@ -181,7 +181,7 @@ mysql> DROP USER 'userName'@'hostName';
 For more detail, see [here](http://dev.mysql.com/doc/refman/5.7/en/grant.html):
 
 {% highlight sql %}
-# All privileges in this case
+-- All privileges in this case
 mysql> GRANT ALL ON databaseName.* TO 'userName'@'hostName';
 {% endhighlight %}
 

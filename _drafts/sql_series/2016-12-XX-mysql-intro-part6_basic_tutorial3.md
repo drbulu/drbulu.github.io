@@ -15,51 +15,6 @@ http://articles.latimes.com/1986-05-08/news/vw-4487_1_square-root
 
 ## Data Exploration:
 
-... back to our [intrepid explorer]( {{ site.baseurl }}{% post_url 2016-12-07-mysql-intro-part4_basic_tutorial1 %}#setup-tutorial-user )
-
-{% highlight shell %}
-# localhost connection
-shell> mysql -u sophieG -p sakila
-Enter password: **********
-{% endhighlight %}
-
-a lot of these solutions require some understanding of this table:
-https://dev.mysql.com/doc/refman/5.7/en/information-schema.html
-https://dev.mysql.com/doc/refman/5.7/en/innodb-information-schema.html
-
-#### Show a tidy list of all the tables in the database
-
-{% highlight sql %}
-mysql> SHOW TABLES;
-+----------------------------+
-| Tables_in_sakila           |
-+----------------------------+
-| actor                      |
-| actor_info                 |
-| address                    |
-| category                   |
-| city                       |
-| country                    |
-| customer                   |
-| customer_list              |
-| film                       |
-| film_actor                 |
-| film_category              |
-| film_list                  |
-| film_text                  |
-| inventory                  |
-| language                   |
-| nicer_but_slower_film_list |
-| payment                    |
-| rental                     |
-| sales_by_film_category     |
-| sales_by_store             |
-| staff                      |
-| staff_list                 |
-| store                      |
-+----------------------------+
-23 rows in set (0.00 sec)
-{% endhighlight %}
 
 #### Table row length summary -
 http://stackoverflow.com/questions/2692340/
@@ -70,12 +25,38 @@ see [here](http://stackoverflow.com/questions/10912693/exact-count-of-all-rows-i
 
 
 {% highlight sql %}
-
+mysql> SELECT TABLE_NAME, TABLE_ROWS 
+    -> FROM `information_schema`.`tables` 
+    -> WHERE `table_schema` = 'sakila';
++----------------------------+------------+
+| TABLE_NAME                 | TABLE_ROWS |
++----------------------------+------------+
+| actor                      |        200 |
+| actor_info                 |       NULL |
+| address                    |        603 |
+| category                   |         16 |
+| city                       |        600 |
+| country                    |        109 |
+| customer                   |        599 |
+| customer_list              |       NULL |
+| film                       |       1000 |
+| film_actor                 |       5462 |
+| film_category              |       1000 |
+| film_list                  |       NULL |
+| film_text                  |       1000 |
+| inventory                  |       4581 |
+| language                   |          6 |
+| nicer_but_slower_film_list |       NULL |
+| payment                    |      16086 |
+| rental                     |      16005 |
+| sales_by_film_category     |       NULL |
+| sales_by_store             |       NULL |
+| staff                      |          2 |
+| staff_list                 |       NULL |
+| store                      |          2 |
++----------------------------+------------+
+23 rows in set (0.00 sec)
 {% endhighlight %}
-
-SELECT TABLE_NAME, TABLE_ROWS 
-FROM `information_schema`.`tables` 
-WHERE `table_schema` = 'sakila';
 
 #### Table column summary
 
@@ -85,7 +66,25 @@ FROM information_schema.columns
 WHERE table_schema = 'sakila';
 
 {% highlight sql %}
-
+mysql> SELECT table_name, column_name 
+    -> FROM information_schema.columns 
+    -> WHERE table_schema = 'sakila';
++----------------------------+----------------------+
+| table_name                 | column_name          |
++----------------------------+----------------------+
+| actor                      | actor_id             |
+| actor                      | first_name           |
+| actor                      | last_name            |
+| actor                      | last_update          |
+| actor_info                 | actor_id             |
+| actor_info                 | first_name           |
+| actor_info                 | last_name            |
+| actor_info                 | film_info            |
+| address                    | address_id           |
+| address                    | address              |
++----------------------------+----------------------+
+132 rows in set (0.00 sec)
+-- note: the remaining 122 columns are not shown from brevity
 {% endhighlight %}
 
 
@@ -93,12 +92,39 @@ WHERE table_schema = 'sakila';
 
 some help from: https://dev.mysql.com/doc/refman/5.7/en/group-by-functions.html
 
-SELECT table_name, count(column_name) 
-FROM information_schema.columns 
-WHERE table_schema = 'sakila' 
-GROUP BY table_name ;
-
 {% highlight sql %}
+mysql> SELECT table_name, count(column_name) 
+    -> FROM information_schema.columns 
+    -> WHERE table_schema = 'sakila' 
+    -> GROUP BY table_name;
++----------------------------+--------------------+
+| table_name                 | count(column_name) |
++----------------------------+--------------------+
+| actor                      |                  4 |
+| actor_info                 |                  4 |
+| address                    |                  9 |
+| category                   |                  3 |
+| city                       |                  4 |
+| country                    |                  3 |
+| customer                   |                  9 |
+| customer_list              |                  9 |
+| film                       |                 13 |
+| film_actor                 |                  3 |
+| film_category              |                  3 |
+| film_list                  |                  8 |
+| film_text                  |                  3 |
+| inventory                  |                  4 |
+| language                   |                  3 |
+| nicer_but_slower_film_list |                  8 |
+| payment                    |                  7 |
+| rental                     |                  7 |
+| sales_by_film_category     |                  2 |
+| sales_by_store             |                  3 |
+| staff                      |                 11 |
+| staff_list                 |                  8 |
+| store                      |                  4 |
++----------------------------+--------------------+
+23 rows in set (0.00 sec)
 
 {% endhighlight %}
 
@@ -284,12 +310,12 @@ http://dev.mysql.com/doc/refman/5.7/en/stored-program-restrictions.html
 
 ## Resource list
 
-* [MySQL docs](http://dev.mysql.com/doc/refman/5.7/en/examples.html) examples
+http://dev.mysql.com/doc/refman/5.7/en/stored-routines.html
+http://dev.mysql.com/doc/refman/5.7/en/stored-routines-syntax.html
+http://dev.mysql.com/doc/refman/5.7/en/stored-programs-defining.html
+http://dev.mysql.com/doc/refman/5.7/en/create-procedure.html
+use in stored programs/procedure
+http://dev.mysql.com/doc/refman/5.7/en/sql-syntax-compound-statements.html
 
-* [w3schools](http://www.w3schools.com/sql/) tutorial
-
-* [tutorialspoint MySQL](http://www.tutorialspoint.com/mysql/) tutorial
-
-* [tutorialspoint SQL](http://www.tutorialspoint.com/sql/) tutorial
-
-* Sakila [usage examples](http://dev.mysql.com/doc/sakila/en/sakila-usage.html).
+http://dev.mysql.com/doc/refman/5.7/en/sql-syntax-prepared-statements.html
+http://dev.mysql.com/doc/refman/5.7/en/sql-syntax-compound-statements.html
