@@ -255,7 +255,7 @@ mysql> SELECT film_id, title
 5 rows in set (0.00 sec)
 {% endhighlight %}
 
-#### Aliases
+### Aliases
 
 Previous sections focusing on [counting rows](#b-counting-rows), [counting columns](#c-counting-columns) and [tail](#ii-tail) made use of [aliases](http://www.w3schools.com/sql/sql_alias.asp). The MySQL docs have some interesting notes on [alias usage](https://dev.mysql.com/doc/refman/5.7/en/problems-with-alias.html) logic and restrictions, which might come in handy when I next come unstuck.
 
