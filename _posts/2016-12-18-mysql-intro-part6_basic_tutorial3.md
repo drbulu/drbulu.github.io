@@ -15,10 +15,10 @@ tags: [SQL, MySQL, relational database, rdbms, tutorial]
 In the [previous post]({{ site.baseurl }}{% post_url 2016-12-16-mysql-intro-part5_basic_tutorial2 %}) of this series, we looked into summarising information about a database to enable us to subsequently utilise its contents. How can you use what you cannot see or understand?
 
 ### Aim:
-THe question of the day is how to get an idea of the size of a database? Specifically, how do we efficiently get a summary of the size (rows and columns) of all tables in a database?
+The question of the day is how to get an idea of the size of a database? Specifically, how do we efficiently get a summary of the size (rows and columns) of all tables in a database?
 
 ### The problem:
-Previously, we used **```SHOW TABLES```** to summarise all the _names_ of a database's tables in a single call (instruction/statement). However, we were only able to obtain row and column counts separately for one table at a time. This isn't much of a problem for very small databases, however, for large databases, this seems to be extremely tedious (and unproductive). The sakila database consists of 23 tables, as we discovered in our [previous exploration]({{ site.baseurl }}{% post_url 2016-12-16-mysql-intro-part5_basic_tutorial2 %}#show-a-tidy-list-of-all-the-tables-in-the-database), therefore, we need a more efficient solution!
+Previously, we used **```SHOW TABLES```** to summarise all the _names_ of a database's tables in a single call (instruction/statement). However, we were only able to obtain row and column counts separately for one table at a time. This isn't much of a problem for very small databases, however, for large databases, this seems to be extremely tedious (and unproductive). The sakila database consists of **23** tables, as we discovered in our [previous exploration]({{ site.baseurl }}{% post_url 2016-12-16-mysql-intro-part5_basic_tutorial2 %}#show-a-tidy-list-of-all-the-tables-in-the-database), therefore, we need a more efficient solution!
 
 ## Summarise all the columns
 
@@ -281,4 +281,3 @@ Side note: if you write "TABLE_COLS" as "table_cols", that is how it will appear
 Today, we have come very close to achieving our simple goal of capturing a simple snapshot of our database of interest. However, **7** of the **23** tables (~30 %) of the **`sakila`** database have NULL rows (i.e. whose size is partially hidden from us). I am curently looking for a good solution for this, which I hope to cover in later posts. For now, however, we rest (tenuously) upon our laurels, having effectively created for ourselves... 
 
 >SHOW TABLES <b style="color:red;">PLUS :wink:
-
