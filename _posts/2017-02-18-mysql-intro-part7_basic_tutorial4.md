@@ -219,4 +219,6 @@ Thus far, this has been an enjoyable and instructive introduction into SQL via M
 
 This has provided me a good platform to continue growing my SQL skills and given me the confidence to start using SQL to support my future data science endeavours!
 
+I look forward to being able to use procedures like DB_SNAPSHOT to help me to understand the databases that I will need to analyse and construct in future.
+
 :smile: :smile:
