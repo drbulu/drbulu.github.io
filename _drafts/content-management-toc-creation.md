@@ -49,3 +49,27 @@ http://stackoverflow.com/questions/5319754/cross-reference-named-anchor-in-markd
 Show case code and output (might be hard, given that only ONE toc will show per page (I think)
 
 ensure that TOC (and series panels) autohide when not in use or if series = invalid ( e.g. NULL or empty string )
+
+TOC Rmarkdown .... 
+
+https://www.r-bloggers.com/alternate-r-markdown-templates/
+
+http://rmarkdown.rstudio.com/developer_document_templates.html 
+
+<!-- 
+Adding TOC title
+https://www.w3schools.com/cssref/pr_gen_content.asp
+
+How to move TOC in document:
+http://stackoverflow.com/questions/25587773/#25625560
+
+More fun and games with TOC
+http://rpubs.com/stevepowell99/floating-css
+-->
+
+<style> #TOC:before {
+    content: "Table of Contents";
+    font-weight: bold;
+    font-size: 30px;
+}
+</style>
