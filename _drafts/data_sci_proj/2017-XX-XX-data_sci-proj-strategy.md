@@ -22,9 +22,19 @@ Why do this? - Data Science projects
 * Need to expand skill set
     * consistent with strategy of "formal" and "informal" methods
     * learn new things asyou go
+    
+    
 * Build a data science portfolio
     * strengthen organised skills development
     * CV support: allow me to develop a data science oriented CV based on independent, (open source, open data) projects.
+    
+
+a number of links about creating a data science focused CVs [here](http://will-stanton.com/creating-a-great-data-science-resume/) and [here](https://www.analyticsvidhya.com/blog/2014/11/tips-prepare-cv-data-science-roles/)
+
+
+[interesting post on real knowledge](https://medium.com/swlh/charlie-munger-on-the-two-types-of-knowledge-3e5288b75c49)    
+    
+    [project portfolio](http://www.dataquest.io/blog/build-a-data-science-portfolio/) creation
     
 * Basic types:
     * independent: typically github: code + docs + data projects (e.g. Shiny and D3)
@@ -46,3 +56,5 @@ Why do this? - Data Science projects
             * related external references. e.g.
                 * kaggle page(s)
                 * project background info
+
+Some basic information about [kaggle using R](https://www.datacamp.com/community/open-courses/kaggle-r-tutorial-on-machine-learning#gs.K4HQLw8) and [python](http://www.dataquest.io/blog/kaggle-tutorial/).
