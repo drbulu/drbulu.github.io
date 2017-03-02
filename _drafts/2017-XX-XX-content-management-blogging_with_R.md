@@ -28,3 +28,7 @@ blog post [here](http://kevinfw.com/post/blogging-with-r-markdown/) in Dec 2016 
 
 As it typical, Hugo has a [quickstart](http://gohugo.io/overview/quickstart) as well as a Hugo has a section oMigrating from [Jekyll](https://gohugo.io/tutorials/migrate-from-jekyll/)
 
+While it would be nice to move, one complication is the high degree of cross linking between the various posts that I have written. Presumably, since Hugo doesn't feature Liquid tags, this will be a painful process of transition. It is nice that the templating can be switched across, however, this will likely come with more complication than I am prepared for, at the moment. Basically, I feel that a transition would have to be a condidered process, with a substatial time dedication and significant, purppseful motivation.
+
+What's my solution then?
+
