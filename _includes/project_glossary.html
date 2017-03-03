@@ -1,0 +1,26 @@
+{% if page.project == "overview" %}
+
+<div class="project_synopsis">
+
+    <h2 id="project-glossary">Project Glossary</h2>
+    
+    {% for page in site.pages reversed %}
+        {% if page.project and page.project != "overview" and page.layout == 'project_page' %}
+            <div class="proj_summary">
+            
+                <p><span class="bold_p">Project Title:</span> <a href="{{ page.url }}">{{ page.title }}</a></p>
+            
+                {% assign pathParts = page.path | split: "/" %}
+                {% assign length = pathParts.size | minus: 2 %}
+                {% assign path = "" %}
+                {% for c in (1..length) %}
+                    {% capture path %}{{ path }}/{{pathParts[c]}}{% endcapture %}
+                {% endfor %}
+        
+                <p class="bold_p">Project Description:</p>
+                <p class="proj_desc">{% include_relative {{path}}/{{page.description}} %}</p>
+            </div>
+       {% endif %}
+    {% endfor %}
+</div>
+{% endif %}

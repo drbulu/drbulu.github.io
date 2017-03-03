@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<article class="projects_main_page">
+
+  <h1>{{ page.title }}</h1>
+
+  <div class="entry">
+    {{ content }}
+  </div>
+  
+  <div id="glossary">
+    {% include project_glossary.html %}
+  </div>
+  
+  <div id="related_posts">
+    <!--{% include project_glossary.html %} -->
+  </div>
+  
+</article>
+
+<style>
+    #glossary h2 {
+        border-bottom-style: solid;
+        border-color: blue;
+        border-width: 2px;
+    }
+    
+    .proj_summary {
+        border-style: none none solid none;
+        border-color: blue;
+        border-width: 2px;
+    }
+
+    .bold_p {
+        color: green;
+        font-weight: bold;
+        text-decoration: underline;
+        font-style: italic;
+    }
+    
+    p .proj_desc {
+        text-indent: 100px;
+        text-align:justify;
+    }
+    
+</style>

@@ -11,3 +11,4 @@ package.json
 .Rhistory
 *.Rproj*
 .Rproj.user
+project_workspace_start.sh
