@@ -1,0 +1,71 @@
+{% comment %} List titles of post series related to the current page's project {% endcomment %}
+
+{% comment %} 
+    STEP 1: get the first post URL and Series Title of each series 
+    Note: filtered against non-project posts in first compound IF statement.
+{% endcomment %}
+
+{% assign series_titles = "" %}
+{% assign series_first_url = "" %}
+{% assign last_series_title = "" %}
+{% assign series_first_url = "" %}
+{% assign split_char_title = "|^|" %}
+{% assign split_char_url = " " %}
+
+{% for post in site.posts reversed %}
+    {% if post.series == false or 
+        post.series == last_series_title or
+        post.series == nil or
+        post.project == nil or
+        post.project != page.project
+    %} {% continue %} {% endif %}
+    
+    {% assign last_series_title = post.series %}
+    
+    {% if series_titles == "" %}
+        {% assign series_titles = post.series %} 
+    {% else %}
+        {% capture series_titles %} 
+            {{ series_titles }} {{ split_char_title }} {{ site.baseurl | append: post.series}} 
+        {% endcapture %}
+    {% endif %}
+    
+    {% if series_first_url == "" %}
+        {% assign series_first_url = post.url %} 
+    {% else %}
+        {% capture series_first_url %} 
+            {{ series_first_url }} {{ {% split_char_url }} {{ post.url }} 
+        {% endcapture %}
+    {% endif %}
+{% endfor %}
+
+{% comment %}
+    STEP 2: construct a nav list from the extracted info 
+{% endcomment %}
+
+{% assign series_titles = series_titles | split: split_char_title %}
+{% assign series_first_url = series_first_url | split: split_char_url %}
+
+{% assign entityCount = series_titles.size | minus: 1 %}
+
+{% comment %}
+    IMPORTANT: ONLY render html if at least ONE valid entry exists! 
+{% endcomment %}
+{% if series_titles.size >= 1 and series_first_url.size >= 1%}
+    {% if series_first_url.size == series_titles.size %}
+<br/>
+<div class="panel related_posts">
+    <h2 class="related_title">Related Post Series</h2>
+        {% assign entityCount = series_titles.size | minus: 1 %}
+    <ul>
+        {% assign current_url = "" %}
+        {% for i in (0..entityCount) %}
+            {% assign current_url = site.baseurl | append: series_first_url[i] | remove: " " %}
+        <li>Series Name: <a href="{{current_url}}">{{ series_titles[i] }}</a></li>
+        {% endfor %}
+    </ul>
+    </div>
+    {% else %}
+    <p>list construction error!</p>
+    {% endif %}
+{% endif %}

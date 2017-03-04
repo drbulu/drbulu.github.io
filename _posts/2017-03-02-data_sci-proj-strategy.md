@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Data Science Portfolio - Project Strategy
+project: overview
 published: true
 categories: [data science, project]
 tags: [strategy, reflection, overview]

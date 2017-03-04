@@ -6,18 +6,16 @@ layout: default
 
   <h1>{{ page.title }}</h1>
 
-  <div class="entry">
+  <div class="project_content">
     {{ content }}
   </div>
   
   <div id="glossary">
-    {% include project_glossary.html %}
+    {% include project_index.html %}
   </div>
-  
-  <div id="related_posts">
-    <!--{% include project_glossary.html %} -->
-  </div>
-  
+  <div id="related_series">{% include project_related_series.html %}</div>
+  <div id="related_posts">{% include project_related_posts.html %}</div>
+
 </article>
 
 <style>

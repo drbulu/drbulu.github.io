@@ -39,11 +39,11 @@ has an includes_relative file in order to include a description.html file that i
 
 ### Included items
 
-* Project glossary
+* Project glossary/index
 
 some inspiration from [here](http://stackoverflow.com/questions/25506491/jekyll-loop-pages-by-parent-directory) and [here](http://stackoverflow.com/questions/9110803/make-custom-page-based-loop-in-jekyll#16057087). Simpler logic than series.html, and more what I am looking for.
 
-_includes/project_glossary.html
+_includes/project_index.html
 
 * Related posts
 
@@ -62,7 +62,9 @@ https://jekyllrb.com/docs/includes/#using-variables-names-for-the-include-file
 
 The following snippet should hopefully allow a project page's description to 
 
-{% include_relative {{ page.description }} %}
+Note: changed the YAML variable from description to abstract to better communicate the kind of text that it should contain
+
+{% raw %}{% include_relative {{ page.abstract }} %}{% endraw %}
 
 so far, only working for the project page.
 
@@ -78,12 +80,12 @@ so far, only working for the project page.
         * got some inspiration [here](http://stackoverflow.com/questions/27433649/reuse-file-path-in-jekyll). Basically cribbed the entire solution, but tweaked it so that the first path element was excluded from the reconstructed path. Couldn't find inspiration in Jekyll docs
         * then needed to concat strings
         
-        {% include_relative {{path}}/{{page.description}} %}
+        {% raw %}{% include_relative {{path}}/{{page.abstract}} %}{% endraw %}
 
 https://help.shopify.com/themes/liquid/filters/math-filters#minus
 
 
-Note: trying to add html comments to _includes files i.e. liquid template files seemed to kill proper file processing... interestiong. As I kept finding when trying to put comments in **project_glossary.html**
+Note: trying to add html comments to _includes files i.e. liquid template files seemed to kill proper file processing... interestiong. As I kept finding when trying to put comments in **project_glossary.html**. [This](http://stackoverflow.com/questions/27007323/how-do-you-comment-out-in-liquid) is how comments should be done
 
 
 ## Now for styling
@@ -101,6 +103,82 @@ implementing styling in **project_overview_page.html** based on html elements cr
 
 Once finished with the styling, will include in main CSS as previously done in an earlier post
 
-## Related posts
+## Related content
+
+possibly also extend this to building a subpage nav if need be? For each project, the main page already has a specialised navbar in the Index
+
+### posts
+
+in _includes
+
+project_related_posts.html
+
+tested using the latest project post: added "project: overview" to YAML
+
+### post series
+
+project_related_series.html
+
+project prefix for organisational clarity 
+
+both included in the **project_overview_page.html** layout and also in the **project_page.html**
+{% raw %}{% include project_related_posts.html %}{% endraw %}
+
+{% raw %}
+  <div id="related_series">{% include project_related_series.html %}</div>
+  <div id="related_posts">{% include project_related_posts.html %}</div>
+{% endraw %}
+
+can also restrict related posts to related non-series posts to avoid having a large list if the need arose.
+
+post series code more involved. needed to refresh liquid [variable](https://help.shopify.com/themes/liquid/tags/variable-tags) assignments and [data types](https://help.shopify.com/themes/liquid/basics/types). ... well.... you can't initialise empty lists in liquid... ooookay :alien:
+
+[Continue](https://help.shopify.com/themes/liquid/tags/iteration-tags#continue) will be handy here
+
+Also, starting to make a habit, where possible of separating the liquid code blocks and HTML elements where possible, in addition to the judicious use of liquid comments.
+
+
+
+basic logic
+
+* loop through all site.posts from oldest to youngest (first to current)
+* if site.posts[i] is part of a series.
+    * check if an earlier post of the same series has already been added
+    * if no --> add to a seriesPostList variable
+    * if yes --> skip
+    
+constructed a multi line liquid tag in loop input validation step :smile: 
+I didn't think that it was possible
+
+https://help.shopify.com/themes/liquid/basics/whitespace
+
+https://help.shopify.com/themes/liquid/filters/string-filters
+
+Thought I was smart and used the ^caret as the split character for both URLs and Series titles... what a disaster! Glad that I didn't hard code the split character variable
+Changing it to space made the URLs valid, but obviously messed up the Series titles
+... options from here were to:
+
+* have different string splits for Series titles and series post URLs
+* use the selected series post URLs to extract the relevant series title - requiring another loop through 
+
+Took simplest solution, made two split_char variables split_char_title for series titles
+and split_char_url for the associated post URLs
+
+I could have taken a fancier solution possibly, one which tried to exploit the fact that Liquid is [Ruby-based](http://stackoverflow.com/a/13660352), but... I can't be bothered, and much pain has already been experienced thus far. Further, the present solution, while probably not elegant... is definitely not a hack.
+
+the title split char needed to be exotic, I.e. there would be a very low probability of ever seeing that combination of characters in a valid series title string. Therefore I chose the three character combination "|^|", which seemed too odd to be valid.
+
+
+
+## Proposed project defaults
+
+add to config.yaml?
+pages with **project_page.html** layout
+
+show_project_posts: true
+show_project_series: true
+
+in order to allow this, needed to only execute if one or more entries were.
+Otherwise 
 
 ## Proposed workflow ... evaluation

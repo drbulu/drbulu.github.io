@@ -2,7 +2,7 @@
 layout: project_page
 title: Data Science - Study Projects
 project: study_projects
-description: description.html
+abstract: description.html
 ---
 
 ## Project Links:
