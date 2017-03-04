@@ -7,7 +7,7 @@ categories: [blogging, web design, web development]
 tags: [web design, content management, resources, colour, color]
 ---
 
-More tools for content development :) !
+More tools for content development :smile: !
 
 ## Intro
 In the previous part of this series, I gave a lot of focus to Markdown because it is a highly useful tool for content generation by simplifying the web authoring process. That said, I have often found the need to apply HTML5 and CSS3 in order to overcome some limitation with either Markdown itself or my skill therewith. Further, since Markdown is processed into HTML (or other formats via [Pandoc](http://pandoc.org/)), the ability to utilise HTML, CSS3 and JavaScript.

@@ -7,7 +7,7 @@ categories: [web design, web development]
 tags: [web design, content management]
 ---
 
-Thinking through the principles of content generation now that the website and blog have been setup :)
+Thinking through the principles of content generation now that the website and blog have been setup :smile:
 
 <!-- Post tagline: give a sneak peek into post content -->
 
@@ -20,7 +20,7 @@ For the last week or so, I have been thinking more about the type(s) of content 
 
 <a name="quote-note">Note:</a> I figured that the first quote was from an African proverb, but couldn't find a reference (sadly). Interestingly, this quite has been misattributed to [Benjamin Franklin](https://en.wikiquote.org/wiki/Benjamin_Franklin) and has been referenced by [Mr T.](https://en.wikiquote.org/wiki/Mr._T#Sourced), he that "pitieth the foolish" (sic).
 
-The ideas in this series are basically here to ensure that my content is of maximum utility to anyone who might find this site interesting. My vision is to have a site that consists of concise, useful content. I previously articulated this concept [before]({{ site.baseurl }}{% post_url 2016-11-04-setup-us-the-blog-part1-preamble %}#resourcing) when I talked about having a "website with a blog" (i.e. a website that has blog as one of its features). This is a big dream for one as vebose as I am :).
+The ideas in this series are basically here to ensure that my content is of maximum utility to anyone who might find this site interesting. My vision is to have a site that consists of concise, useful content. I previously articulated this concept [before]({{ site.baseurl }}{% post_url 2016-11-04-setup-us-the-blog-part1-preamble %}#resourcing) when I talked about having a "website with a blog" (i.e. a website that has blog as one of its features). This is a big dream for one as vebose as I am :smile::speech_balloon:.
 
 ## Implementation
 From the brooding musings of the last few days, I have identified three fundamental content types that I will feature on this site to achieve its aims. These are **blog** posts, **topic** pages (study notes) and **project** pages.
@@ -42,4 +42,4 @@ The preparation that I am making to organise the content is all about the vision
 
 <div style="text-align:center;border: 5px solid green;"> "help me to continue to <b>enjoy</b> and <b>explore</b> the ideas that I have learned and reinforced, making them <b><i>second nature</i></b>." </div>
 
-This phrase reiterated above really makes the point best. I the next series of posts I am going to build upon the **concepts** and **tools** that I want to use to make an enjoyable digital space for both me and any potential visitors to this site:)
+This phrase reiterated above really makes the point best. I the next series of posts I am going to build upon the **concepts** and **tools** that I want to use to make an enjoyable digital space for both me and any potential visitors to this site:smile:

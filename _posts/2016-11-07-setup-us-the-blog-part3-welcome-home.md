@@ -83,4 +83,4 @@ The blog posts were initially on the page root (i.e. **drbio.github.io**), which
 This is pretty basic. A simple ```<div class="cta-div">``` with a stack of paragraphs with basic styling. The most advanced operation was adding a ```<style/>``` elenent containing basic [CSS styling](http://www.w3schools.com/css/default.asp) to the centre the text. In retrospect, while I liked the centre placement of the text, it made the text look ragged, detracting from my objectives as stated at the start of this post.
 As far as styling is concerned, it is amazing how effective a carefully premedidated poem with simple text highlighting can be.  
 
-I will settle more concretely on a landing page aesethetic and CTA upon more reflection. This, however, is a great start :). I will work more on CSS styling later when I can work out a good, simple theme.
+I will settle more concretely on a landing page aesethetic and CTA upon more reflection. This, however, is a great start :smile:. I will work more on CSS styling later when I can work out a good, simple theme.

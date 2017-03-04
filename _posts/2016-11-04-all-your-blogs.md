@@ -7,7 +7,7 @@ categories: [blogging]
 tags: [blogging]
 ---
 
-<b style="color:green">WARNING:</b> This first post is a rambly one! But dive in all the same :) !
+<b style="color:green">WARNING:</b> This first post is a rambly one! But dive in all the same :smile:!
 
 Well... I am finally here! This moment has been the culmination of much contemplation and procrastination!  
 
