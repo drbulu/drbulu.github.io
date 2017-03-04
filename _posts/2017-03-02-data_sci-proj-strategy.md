@@ -49,12 +49,12 @@ There are possibly other categories or venues for development, but these represe
 
 Ok... how do I organise this? These projects will, naturally, be a combination of "internal" (hosted on this site) and "exernal" (hosted elsewhere) content. After thinking about this for a while, I figured that it was a good idea to connect project content on this site via a single main project homepage and multiple overview pages describing individual projects:
 
-1. **Project glossary page:** Serves as a glossary or directory index page listing all of the data science projects that are either ongoing or completed
+1. <b id="proj-glossary">Project glossary page:</b> Serves as a glossary or directory index page listing all of the data science projects that are either ongoing or completed
     * Containing an introductory paragraph describing the purpose of the page and the content that it organises.
     * A small section with links to blog posts hosted on this site that relate generally to data science projects and strategy. Featuring content such as new tools or interesting application outlets such as competitions or cooperatives (e.g hackathons).
     * links out the individual project pages
 
-2. **Project overview pages:** A brief overview description page consisting generally of the following components:
+2. <b id="proj-pages">Project overview pages:</b> A brief overview description page consisting generally of the following components:
     * Title: What is the project called?
     * Brief project description (Abstract): Why does this projec exist and what does it aim to achieve?
     * Project-specific blog posts that I may write

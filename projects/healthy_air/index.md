@@ -2,7 +2,7 @@
 layout: project_page
 title: Healthy Air
 project: healthyAir_DSc_proj
-abstract: description.html
+abstract: abstract.html
 show_project_posts: true
 show_project_series: true
 ---

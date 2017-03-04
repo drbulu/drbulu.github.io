@@ -51,7 +51,7 @@ same strategy as project glossary
 
 _includes/related_posts.html
 
-* Project descriptions
+* Project descriptions/abstracts
 
 https://jekyllrb.com/docs/includes/#including-files-relative-to-another-file
 
@@ -59,6 +59,8 @@ https://jekyllrb.com/docs/includes/#using-variables-names-for-the-include-file
 
 
 ### Include relative
+
+This was initially because I couldn't get Liquid capture tags (or any other idea) to do this for me.
 
 The following snippet should hopefully allow a project page's description to 
 
@@ -69,11 +71,11 @@ Note: changed the YAML variable from description to abstract to better communica
 so far, only working for the project page.
 
 * for project page:
-    * have description.html in same folder as specific project's index.html (i.e. in the project folder)
+    * have abstract.html in same folder as specific project's index.html (i.e. in the project folder)
     * set the includes relative liquid tag in project_page.html
     * defined the description variable in each project's index.md YAML. 
         * else Jekyll build error
-        * it is possible to have defaults in [config.yaml](http://jekyllrb.com/docs/configuration/#front-matter-defaults) worth considering in case a global change is made to the naming of description.html (which has a long name)
+        * it is possible to have defaults in [config.yaml](http://jekyllrb.com/docs/configuration/#front-matter-defaults) worth considering in case a global change is made to the naming of description.html (which has a long name) ... now changed to abstract.html.
 * for project overview page.
     * need to modify the project_glossary 
         * enable splitting of page path so that the project directory path segment can be captured and merged with the description.html prefix.

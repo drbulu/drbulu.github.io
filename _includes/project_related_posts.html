@@ -1,27 +1,39 @@
-{% comment %} List out individual posts related to the project of the current page {% endcomment %}
-
-
-
 {% comment %}
-    IMPORTANT: ONLY render html if at least ONE valid entry exists! 
-
-    if series_titles.size >= 1 and series_first_url.size >= 1
+    Aim: List out individual posts related to the project of the current page
+    
+    IMPORTANT: ONLY render html if at least ONE valid entry exists!
     
     Not happy with the solution below for efficiency, but it should work nicely
     Specifically, I am not keen on the idea of looping through all the posts
     twice: 1. To see if any posts exist with a matching project
            2. To do the actual work
     
+    to minimise this: searching from latest post to earliest post
+    exit loop with posts_found = true when the first post is found
+    
+    While not pretty, this might help to neaten up downstream logic.
+    This all had to be done because I wasn't prepared to live through
+    the night mare that was project_related_series.html!
+    
 {% endcomment %}
 
-{% if page.show_project_posts %}
+{% assign posts_found = false %}
+{% for post in site.posts %}
+    {% if page.project == post.project and page.project != nil 
+    %}
+        {% assign posts_found = true %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{% if page.show_project_posts and posts_found == true %}
 <br/>
 <div class="panel related_posts">
     <h2 class="related_title">Related Posts</h2>
     <ul class="post_list">
     {% for post in site.posts %}
 
-        {% if post.series == false or 
+        {% if post.project == false or 
             post.project == nil or
             post.project != page.project
         %} {% continue %} {% endif %}
