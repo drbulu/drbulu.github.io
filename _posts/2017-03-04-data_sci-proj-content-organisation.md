@@ -22,7 +22,7 @@ The main goal of the work that I am describing was to prototype and implement th
 
 After a brief dig into my existing code, I realised that I would need a combination of specialised page layouts and includes components. Given that project-related pages were not ordinary pages, I wanted to separate this complexity from more simple page types without going overboard. Essentially, the basic structure that I settled on was as follows:
 
-1. <b id="proj-layouts">layout templates</b>
+1 <b id="proj-layouts">layout templates</b>
 
 These entities lay out the general structure that defines pages that will be made from them, as specified in the page's YAML. Will give uniformity to the general look of pages made using the same template. This also makes it much easier to modify a particular type (subset) of page without accidentally breaking other page types. Naturally, these live in the **```_layouts/```** subfolder.
 
@@ -30,7 +30,7 @@ These entities lay out the general structure that defines pages that will be mad
 
 * **project_overview_page.html**: This is the general template for the landing page that "coordinates" the various content pertaining specifically to [individual projects]({{ site.baseurl }}{% post_url 2017-03-02-data_sci-proj-strategy %}#proj-pages)). Basically, one overview page per project.
 
-2. <b id="proj-includes">content inclusion fragments</b>
+2 <b id="proj-includes">content inclusion fragments</b>
 
 These fragments abide in the **```_includes/```** subfolder and are a mixture of the Liquid templating and html/css code that are needed to automatically source specific information and add it to a particular place in a particular layout under particular conditions. Usefully, included fragments can embed the same content in multiple layouts :cool:!
 

@@ -1,5 +1,5 @@
 ---
-layout: project_overview_page
+layout: project_index_page
 title: Data Science Projects
 project: overview
 show_project_posts: true
