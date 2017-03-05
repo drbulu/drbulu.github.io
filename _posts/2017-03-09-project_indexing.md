@@ -47,26 +47,12 @@ However, when including a file that is not in the same directory or within the *
 {% raw %}{% include_relative project_dir/abstract.html %}{% endraw %}
 {% endhighlight %}
 
-This was NOT as simple as it first seemed :alien:. However, after some searching I was able to find a useful solution. This essentially involved splitting of each selected project page path in order to obtain the <u>project directory</u> path segment so that it could be captured and prefixed to the **`abstract.html`** path segment. I got my inspiration [here](http://stackoverflow.com/questions/27433649/reuse-file-path-in-jekyll#27434079) and basically cribbed the entire solution, tweaking it to exclude first path element (the project parent dir) from the reconstructed path to properly locate each file. The code section that delivered the completed solution was this: 
+This was NOT as simple as it first seemed :alien:. However, after some searching I was able to find a useful solution. This essentially involved splitting of each selected project page path in order to obtain the <u>project directory</u> path segment so that it could be captured and prefixed to the **`abstract.html`** path segment. I got my inspiration [here](http://stackoverflow.com/questions/27433649/reuse-file-path-in-jekyll#27434079) and basically cribbed the entire solution, tweaking it to exclude first path element (the project parent dir) from the reconstructed path, using a [minus](https://help.shopify.com/themes/liquid/filters/math-filters#minus) subtraction filter, to properly locate each file. The code section that delivered the completed solution was this: 
 
 {% highlight liquid %}
 {% raw %}{% include_relative {{path}}/{{page.abstract}} %}{% endraw %}
 {% endhighlight %}
 
-## ... ##
-
-
-
-{% highlight yaml %}
----
-# project or index page YAML variable section
-show_project_posts: true
-show_project_series: true
-# ...
----
-{% endhighlight %}
-
-
 ## Conclusion
 
-With this overview of the layouts that we need, let's move on to defining the different includes files that give life to these layouts.
+This was an important milestone to accomplish, because I now have a mechanism to automatically cataloque, build and showcase all the projects by simply building a project page to summarise its content and supply a brief abstract :smile::smile:.

@@ -19,8 +19,8 @@ This page provides both an introduction to its purpose, as an index of my variou
 The structure of this file extends that of **`page.html`** with the addition of three div elements that each contain a single Liquid [includes tags](http://jekyllrb.com/docs/includes/) pertaining to the desired content to include. Below the content, the following content sections will be included in order:
 
 * [project index]({{ site.baseurl }}{% post_url 2017-03-09-project_indexing %}): a list of project pages including title and abstract info.
-* [related series](): a list of the blog post series that share the same project name
-* [related posts](): a more detailed list of the individual posts, both series and standalone, related to a particular project.
+* [related series]( 2017-03-12 post ): a list of the blog post series that share the same project name
+* [related posts]( 2017-03-12 post ): a more detailed list of the individual posts, both series and standalone, related to a particular project.
 
 The project index is unique to the project content sphere, and is only featured in the index page. Therefore, the project index includes file will only be called here. However, the post-related includes files will also provide content to the pages of individual projects.
 
