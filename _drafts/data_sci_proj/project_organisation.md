@@ -102,6 +102,8 @@ https://www.w3schools.com/cssref/pr_text_text-indent.asp
 https://www.w3schools.com/cssref/css3_pr_text-justify.asp
 https://www.w3schools.com/cssref/pr_font_weight.asp
 https://www.w3schools.com/cssref/pr_font_font-style.asp
+https://www.w3schools.com/CSS/css_padding.asp
+https://www.w3schools.com/CSS/css_margin.asp
 
 implementing styling in **project_overview_page.html** based on html elements created and defined in the **project_glossary.html** includes fragment.
 

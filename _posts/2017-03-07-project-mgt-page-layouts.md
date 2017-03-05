@@ -18,13 +18,13 @@ This page provides both an introduction to its purpose, as an index of my variou
 
 The structure of this file extends that of **`page.html`** with the addition of three div elements that each contain a single Liquid [includes tags](http://jekyllrb.com/docs/includes/) pertaining to the desired content to include. Below the content, the following content sections will be included in order:
 
-* [project index](): a list of project pages including title and abstract info.
+* [project index]({{ site.baseurl }}{% post_url 2017-03-09-project_indexing %}): a list of project pages including title and abstract info.
 * [related series](): a list of the blog post series that share the same project name
 * [related posts](): a more detailed list of the individual posts, both series and standalone, related to a particular project.
 
 The project index is unique to the project content sphere, and is only featured in the index page. Therefore, the project index includes file will only be called here. However, the post-related includes files will also provide content to the pages of individual projects.
 
-Posts and series, such as this one, that are related to the project index are of a strategic nature, and are therefore given the project name "overview" in order to display them on the index page. This allows me to be able to use the post-related includes infrastructure in both the **`project_index_page.html`** layout, as well as in the [project page layout](). The blog post related sections are included based on the following variables:
+Posts and series, such as this one, that are related to the project index are of a strategic nature, and are therefore given the project name "overview" in order to display them on the index page. This allows me to be able to use the post-related includes infrastructure in both the **`project_index_page.html`** layout, as well as in the project page layout]. The inclusion of sections related to blog posts are included into the document based on the following variables:
 
 {% highlight yaml %}
 ---
@@ -54,7 +54,7 @@ abstract: abstract.html
 ---
 {% endhighlight %}
 
-Interestingly, the **`abstract.html`** includes file is itself also included in the project_index.html file that is included in the project overview page. More on this [later]() :smile:. 
+Interestingly, the **`abstract.html`** includes file is itself also included in the project_index.html file that is included in the project overview page. More on this in the next post :smile:. 
 
 ## Conclusion
 

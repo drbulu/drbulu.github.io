@@ -87,3 +87,4 @@ exclude:
   - CNAME
   - .RData
   - .Rproj
+  - drbulu.github.io.Rproj
