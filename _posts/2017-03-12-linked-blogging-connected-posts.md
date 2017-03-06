@@ -100,9 +100,28 @@ Also on the topic of visibility, the heading of these list are located above the
 
 ## Conclusion
 
+### Summary to date
 At this point we have covered the integration of blog post content into project pages. This is really useful, but there is room for greater improvement. For example, [this](http://stackoverflow.com/questions/22539150/iterate-over-arrays-in-liquid-templates) might prove quite useful later on as getting the index of elements during iteration would be rather handy. In addition, I just realised that the control flow based on the YAML variables should be housed in the layout files. Otherwise, situations may arise where code could be included HTML document but would not be visible, thus silently bloating the page.
 
 <b style="color:red;">Note:</b> 
 
 * Thanks to the [ascii HTML character reference](http://www.ascii.cl/htmlcodes.htm) for valid HTML symbols to include that Jekyll won't process :alien:.
 * Incidentally, I constructed multi-line liquid tags to make my complex if statements for loop input validation step readable... good to know :smile:. Somehow, I didn't think that it was possible.
+
+### Future ideas
+
+Some potentially important things to do in future:
+
+* Move finalised CSS from **`project_index_page.html`** to a separate style in the **`_sass/`** folder and included in **`style.scss`**
+
+* Consider an improved implementation within a single panel class &lt;div&gt; with subdivisions for:
+    * Series posts (by project)
+    * Standalone posts (by project)
+    * other related posts (by category and tag) (seems safer than just by tag)
+
+* Collapsable Project index: Shows project titles, but hides description unless highlighted by user
+title
+
+* Searchable Project index: basically, apply CSS to non-matching entries to hide them.
+
+<b style="color:red;">Note:</b> At least some of the ideas above probably require the use of unique IDs to make selection work
