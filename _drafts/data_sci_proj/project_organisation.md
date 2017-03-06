@@ -1,25 +1,9 @@
 ---
 layout: post
 ---
-## Helpful backgorund
-
 
 ## Now for styling ... will leave till last
 
-puttng a nice line ... above
-
-https://www.w3schools.com/cssref/pr_border-top_style.asp
-https://www.w3schools.com/cssref/pr_border-style.asp
-https://www.w3schools.com/cssref/pr_text_text-indent.asp 
-https://www.w3schools.com/cssref/css3_pr_text-justify.asp
-https://www.w3schools.com/cssref/pr_font_weight.asp
-https://www.w3schools.com/cssref/pr_font_font-style.asp
-https://www.w3schools.com/CSS/css_padding.asp
-https://www.w3schools.com/CSS/css_margin.asp
-
-implementing styling in **project_overview_page.html** based on html elements created and defined in the **project_glossary.html** includes fragment.
-
-Once finished with the styling, will include in main CSS as previously done in an earlier post
 
 ## Proposed project defaults
 
@@ -30,10 +14,6 @@ show_project_posts: true
 show_project_series: true
 
 in order to allow this, needed to only execute if one or more entries were.
-Otherwise 
-
-## Proposed workflow ... evaluation
-
 
 ## Future ideas
 

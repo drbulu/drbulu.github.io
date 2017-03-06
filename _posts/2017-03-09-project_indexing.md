@@ -53,6 +53,12 @@ This was NOT as simple as it first seemed :alien:. However, after some searching
 {% raw %}{% include_relative {{path}}/{{page.abstract}} %}{% endraw %}
 {% endhighlight %}
 
+## Styling
+
+Now that the index page was laid out, it was time to add some styling. I fiddled with the styling of [borders](https://www.w3schools.com/cssref/pr_border-top_style.asp) (and [here](https://www.w3schools.com/cssref/pr_border-style.asp)); text [indentation](https://www.w3schools.com/cssref/pr_text_text-indent.asp) and [alignment](https://www.w3schools.com/cssref/css3_pr_text-justify.asp); font [weight](https://www.w3schools.com/cssref/pr_font_weight.asp) and [styling](https://www.w3schools.com/cssref/pr_font_font-style.asp); and CSS [padding](https://www.w3schools.com/CSS/css_padding.asp) and [margin](https://www.w3schools.com/CSS/css_margin.asp).
+
+At the moment, the styles are implemented in **project_overview_page.html** based on html elements created and defined in the **project_index.html** includes fragment. Once I am finished with the styling, I will include the final styling in the main CSS file, as previously done in an [earlier post]({{ site.baseurl }}{% post_url 2016-11-08-setup-us-the-blog-part4-in-series %}).
+
 ## Conclusion
 
 This was an important milestone to accomplish, because I now have a mechanism to automatically cataloque, build and showcase all the projects by simply building a project page to summarise its content and supply a brief abstract :smile::smile:.
