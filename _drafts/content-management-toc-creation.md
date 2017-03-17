@@ -73,3 +73,39 @@ http://rpubs.com/stevepowell99/floating-css
     font-size: 30px;
 }
 </style>
+
+4. Jekyll TOC
+
+https://blog.webjeda.com/jekyll-toc/
+http://stackoverflow.com/questions/9602936/how-to-create-a-table-of-contents-to-jekyll-blog-post
+https://css-tricks.com/css-content/
+http://stackoverflow.com/questions/20890654/customize-automatically-generated-toc-on-jekyll-kramdown-site
+
+
+http://stackoverflow.com/questions/29519469/hide-an-entry-from-the-toc-table-of-contents-in-jekyll
+
+http://stackoverflow.com/questions/20890654/customize-automatically-generated-toc-on-jekyll-kramdown-site
+
+<style>
+// Adding 'Contents' headline to the TOC
+#markdown-toc:before {
+    content: "Contents";
+    font-weight: bold;
+}
+
+// Using numbers instead of bullets for listing
+#markdown-toc ul {
+    list-style: decimal;
+}
+
+#markdown-toc {
+    border: 1px solid #aaa;
+    padding: 1.5em;
+    list-style: decimal;
+    display: inline-block;
+}
+</style>
+
+* This will become a table of contents (this text will be scraped).
+{:toc}
+
