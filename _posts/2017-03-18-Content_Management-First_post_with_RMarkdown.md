@@ -177,10 +177,9 @@ I basically followed the strategy that I discussed [previously]({{ site.baseurl 
 2. Create the **`_source/`** subdirectory for RMarkdown version of posts to process
     * included a **`_source/helper_scripts/`** subdirectory to house the helper scripts that I need
     * the first helper file `process_posts.R` contains the **`process_rmd_posts()`** function, which is basically a wrapper of **`servr::jekyll()`** with a custom jekyll command (I prefix with "bundle exec" due to my present config and I sometimes work with drafts or future posts). The most important change is that I set the `serve` parameter to false (i.e. **`serve=F`**). This was because RStudio crashes everytime I try to build using the default option of true :alien:. However, this isn't a problem for me as I don't want to serve the website in RStudio anyway and use a web browser instance instead :wink:.
-3. Imported the original [build.R](https://github.com/yihui/knitr-jekyll/blob/74d652ca5641bac65f245ab866a5d901dd5116d3/build.R) code and made modifications (compare with my current version [here]()) during setup.
+3. Imported the original [build.R](https://github.com/yihui/knitr-jekyll/blob/74d652ca5641bac65f245ab866a5d901dd5116d3/build.R) code and made modifications (compare with my current version [here](https://github.com/drbulu/drbulu.github.io/blob/7b1c9c4b0b883ccd6ff3b00318d9e765c08b1d50/build.R)) during setup.
     * images saved to the **`images/fig/posts/`** subdirectory because I didn't want to have another "top level" subdirectory devoted to images (originally called **`figure/`**), when the `images/` folder housed all of my site graphics. Took a litle mucking around but it was worth it. This is setup so that any Rmd content with the pages layout can later be stored in **`images/fig/pages/`** (still to work on that further). 
     * Fixed an issue with figure image links where images were stored in the expected location but not properly linked in the document. I can only presume that this was due to how the `baseurl` YAML variable was setup in the Jekyll Now `_config.yaml` file.
-    * 
 
 ## Conclusion
 
