@@ -88,3 +88,5 @@ exclude:
   - .RData
   - .Rproj
   - drbulu.github.io.Rproj
+  - build.R
+
