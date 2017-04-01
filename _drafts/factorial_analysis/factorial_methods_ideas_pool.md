@@ -1,5 +1,5 @@
 ---
-title: "Factorial Methods: Useful Concepts"
+title: "Factorial Methods: Ideas for future posts"
 series: "Factorial Analysis Intro"
 layout: post
 categories: [data science]
@@ -11,16 +11,10 @@ tags: [overview, factorial methods, dimension reduction, exploratory analysis, u
 The first post in this series gave us a brief introduction into the different types of factorial analyses that are related to PCA, with a snapshot of where they fit. In this post, we are going to familiarise ourselves with 
 
 
-## Computing PCA
+
 
 http://www.sthda.com/english/wiki/principal-component-analysis-in-r-prcomp-vs-princomp-r-software-and-data-mining
 * Active individuals
-
-## PCA terminoloty
-
-
-## PCA rotations
-
 
 
 
