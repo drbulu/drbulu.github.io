@@ -37,6 +37,7 @@ Basically, I am not really interested in trying to <u>convince</u> people of wha
 This dataquest [blog post](http://www.dataquest.io/blog/build-a-data-science-portfolio/) creation contained some very useful advice regarding how to build a data science portfolio. This included descriptions of the different _types_ of project that one could include, each with varying focus (skills to showcase), in addition to some interesting datasets and potential idea storylines.
 
 Most, if not all of the projects that I will construct would be "independent" projects focused on asking interesting, complex questions of open datasets using open source tools. The two main categories, as I can see, that I will focus on are:
+
 * data projects: typically github-based projects consisting of elements such as: 
     * source code 
     * project code and strategy documentation
