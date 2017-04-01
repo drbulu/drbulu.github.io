@@ -127,7 +127,7 @@ One think to note, at the bottom of the [advanced methods page](http://factomine
 
 ## Conclusion
 
-This post has been a rewarding one to compile :smile:. I now feel that I have a much better handle of how to use PCA and its related techniques with clarity. I am now in a position to get my hands dirty with some of these techniques and understand:
+This post has been a rewarding one to compile :smile:. I now feel that I have a much better handle of how to use PCA and related techniques with clarity. I am now in a position to get my hands dirty with some of these techniques and understand:
 
 * their input parameters
 * data preparation requirements 

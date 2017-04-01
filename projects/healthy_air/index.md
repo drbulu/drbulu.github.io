@@ -11,7 +11,7 @@ show_project_series: true
 
 ## Project Links:
 
-* Github Project [main page](https://github.com/drbulu/healthyAir_DSc_proj/blob/master/README.md)
+* GitHub Project [main page](https://github.com/drbulu/healthyAir_DSc_proj/blob/master/README.md)
 
 ## Related Posts:
 
