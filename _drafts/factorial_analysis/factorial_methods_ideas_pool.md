@@ -6,11 +6,30 @@ categories: [data science]
 tags: [overview, factorial methods, dimension reduction, exploratory analysis, unsupervised learning, PCA, MCA FAMD, MFA]
 ---
 
+## PCA rotations
+
+
+Most useful guide regarding the different components and their interpretation: 
+
+* http://www.sthda.com/english/wiki/principal-component-analysis-the-basics-you-should-read-r-software-and-data-mining
+* http://www.sthda.com/english/wiki/principal-component-analysis-how-to-reveal-the-most-important-variables-in-your-data-r-software-and-data-mining
+* https://www.xlstat.com/en/solutions/features/principal-component-analysis-pca 
+
+* http://stats.stackexchange.com/questions/143905/loadings-vs-eigenvectors-in-pca-when-to-use-one-or-another
+* http://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/35653#35653
+* http://stats.stackexchange.com/questions/80534/what-are-the-units-in-this-pca-biplot/80576#80576
+
+* https://georgemdallas.wordpress.com/2013/10/30/principal-component-analysis-4-dummies-eigenvectors-eigenvalues-and-dimension-reduction/
+* interesting but indepth: http://stats.stackexchange.com/a/150978
+
+
+
+
+http://www4.ncsu.edu/~slrace/LinearAlgebra2016/Slides/EigenspacesPrint.pdf
+
+
+
 ## Introduction
-
-The first post in this series gave us a brief introduction into the different types of factorial analyses that are related to PCA, with a snapshot of where they fit. In this post, we are going to familiarise ourselves with 
-
-
 
 
 http://www.sthda.com/english/wiki/principal-component-analysis-in-r-prcomp-vs-princomp-r-software-and-data-mining
