@@ -2,6 +2,7 @@
 title: "Factorial Methods: Core Concepts 1"
 series: "Factorial Analysis Intro"
 layout: post
+math_symbols: true
 categories: [data science]
 tags: [overview, factorial methods, dimension reduction, exploratory analysis, unsupervised learning, PCA, MCA FAMD, MFA]
 ---
@@ -34,7 +35,7 @@ With all this in mind, let us begin exploration :smile:
 
 ## Analysis computation (PCA)
 
-This section 
+This section was one that I found necessary to tackle before fleshing out the other ideas in this post. This was because I realised that I had to have a good conceptual grasp of how <b>Analyses</b> are calculated. Here, I aim to use PCA as a lens to understand the inner workings of factorial analyses to alay potential confusion about their interpretation.
 
 During the background reading that I did for the previous post, I discovered that PCA can be computed via a number of means. I identified four different methods from looking at the various sections of the [Wikipedia entry](https://en.wikipedia.org/wiki/Principal_component_analysis#Derivation_of_PCA_using_the_covariance_method) of the PCA Wikipedia page and also by checking out [this answer](http://stats.stackexchange.com/a/79072) at stackexchange that in turn cited [this paper](http://www.sciencedirect.com/science/article/pii/S0169743997000105?via%3Dihub). In addition, three of these methods are summarised [here](https://learnche.org/pid/latent-variable-modelling/principal-component-analysis/algorithms-to-calculate-build-pca-models). Ignoring the fact that each method potentially manifests as "classical" or "kernel" forms, the methods are:
 
@@ -57,7 +58,7 @@ However, I will be using the terms eigenvalues and eigenvectors as the general t
 
 Incidentally, this might be simplistic, but it seemed to me that the eigenvalue seems to be a scalar that is the [greatest common divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor) of all of the elements in the eigenvector. I mention it because the idea made some sense to me as a neat rationalisation for why eigenvalues exist, because the eigenvalue is potentially derived from the unit scaling of the eivenvector. That said, I'm not sure whether this is the actual mathematical explanation.
 
-## Analysis terminoloty
+## Analysis terminology
 
 ### key references used:
 
@@ -67,7 +68,7 @@ To this end, I decided to read through the work of [Abdi (2010)](https://www.utd
 
 Again, the overall aim is to <b>distill</b> these concepts into their most basic definitions as a reference point for further exploration.
 
-### 1) Fundamentals components
+### 1) The basics
 
 #### a. data matrix:
 
@@ -93,6 +94,13 @@ Basically, inertia measures the amount of <b><i>information</i></b> contained wi
 
 #### c. centre of gravity: 
 
+Represents the centre of gravity (mean) of the rows: 
+
+* of the original data matrix
+* synonyms: barycentre or centroid
+* a vector of length <b><i>p</i></b>
+* can be used to represent group centres (e.g.  [here](http://www.sthda.com/english/wiki/principal-component-analysis-in-r-prcomp-vs-princomp-r-software-and-data-mining#supplementary-qualitative-variables))?
+
 #### d. loadings: 
 
 1. loading:
@@ -105,14 +113,11 @@ Basically, inertia measures the amount of <b><i>information</i></b> contained wi
 
 #### e. Scores 
 
-a vector that represents transformation of the individual observations (rows) so that they can be plotted on the PC cartesian space
-    * vector length = # observations/rows
-    * 1 score vector per PC
+A vector that represents transformation of the individual observations (rows) so that they can be plotted on the PC cartesian space:
 
-Scores:	"The values of individual observations represented according to PCs
-*  Calculated using the loadings
-* 1 scores vector per component
-* Vector contains n elements (one element per observation)"
+* values of the PC variables for each row
+* Vector contains <b><i>n</i></b> elements (one element per observation)
+* 1 vector of scores per PC
 
 ### 2) Contributions:	
 
@@ -126,9 +131,14 @@ This section attempts to deal specifically with components that relate one aspec
 
 #### b. observation contributions: 
 
-* The importance of an specific observation (i) to a particular PC (l)
-* calculated as: ctri, l = observation score(i)<span class="superscript">2</span> &divide; eigenvalue (l)
-* Note: eigenvalue = sum of squares of all observation scores
+* The importance of an specific observation <b><i>i</i></b> to a particular PC (l)
+* calculated using:
+    * the PC's eivenvalue ($\lambda_l$)
+    * observation's score, which we'll call $o_{i,l}$ (observation <i>i</i> for component <i>l</i>)
+
+$$ctr_{i,l} = { o_{i,l} \over \lambda_l } = { o_{i,l} \over \sum^n_1 o^2_{i,l} }$$
+
+> Note: $\lambda_l$ = $\sum^n_1 o^2_{i,l}$
 
 #### c. PC contributions (cos<span class="superscript">2</span>):
 
@@ -137,33 +147,62 @@ This section attempts to deal specifically with components that relate one aspec
     * i.e. correlation between an observation and a PC
 * indicates which PCs are important to interpreting an observation
 
-### 3) active and passive components
+### 3) Active vs. Passive
 
-With regards to variables, the term compatible relates specifically to whether a variable can be used in the computation of PCs by the <b><i>Analysis</i></b>.
+The calculation and interpretation of a given <b><i>Analysis</i></b> potentially involve two types of inputs: active and passive. Therefore, it is useful to have a clear idea of what these constituents are.
 
-#### a. active components:
+Related to this, with regards to variables, I use contrast the terms <i>compatible</i> and <i>incompatible</i>. This indicates whether a variable can be used in the computation of PCs by the <b><i>Analysis</i></b> in question.
+
+* compatible: e.g. <b>quantitative</b> variables as input to PCA 
+* incompatible: e.g. PCA input variables <u>cannot</u> be <b>qualitative</b>
+
+#### a. active inputs:
     
-input used to run the PCA analysis and calculate the PCs
-    
-* Active variables: Input variables for computation of the PCs
-* Active individuals	Input observations for computation of the PCs
+Inputs used to calculate the PCs for a given <b><i>Analysis</i></b>:
 
-#### b. supplementary components:
+* Active variables: 
+    * Input variables <u>compatible</u> for computation of the PCs
+    * $\sum loadings^2 = 1$
 
-a.k.a passive 
+* Active individuals: 
+    * Input observation rows for computation of the PCs
+    * each row contains measurements of the <b><i>p</i></b> active variables
 
-Variables included AFTER computation of the PCs
+#### b. supplementary inputs:
 
-* variables (qualitative or quantitative) added to the PCA after it has been computed. 
-* give context
+Inputs included <u>after</u> the calculation of PCs by the <b><i>Analysis</i></b>. Also referred to as <i>passive</i>:
 
+* passive observations
+    * not used to compute the PCs
+    * row contains measurements of the same <b><i>p</i></b> active variables
+    * scores for calculated using the loading matrix calculated from the active variables
+     * <b style="color:red;">Machine learning note:</b> passive observations <b>must</b> be preprocessed using the data centroids (means) and/or standard deviations used to preprocess the <b>active</b> variables (as explained in week 2 of [this](https://www.coursera.org/learn/practical-machine-learning#syllabus) course).
 
-supplementary individuals:
+* passive variables
+    * Additional variables measured for active (and possibly passive) observations
+    * General aim: add further insight to the <b><i>Analysis</i></b>
+        * add new insight to active variables
+        * find where passive variables fit in the active analysis context
+    * a) <u>compatible</u> variables:
+        * Measures correlation between active PCs and variables
+        * Loadings computed between passive variable(s) and active PCs
+            * i.e. correlation coefficients
+            * elable plotting of these variables
+            * Supplementary $\sum loadings^2 \ne 1$
+    * b) <u>incompatible</u> variables:
+        * some analyses have input variables restrictions:
+            * PCA: quantitative ONLY
+            * MCA: qualitative ONLY
+        * indirect integration:
+            * cannot be computed directly by the <b><i>Analysis</i></b>
+            * but can be superimposed onto the analysis e.g <u>plotting</u>:
+                * colour by variable
+                * shape by variable
+                * group by varible (e.g. circle scores by group as shown [here](http://www.sthda.com/english/wiki/principal-component-analysis-in-r-prcomp-vs-princomp-r-software-and-data-mining#supplementary-qualitative-variables))
+            * consider versatile <b><i>Analysis</i></b> alternative:
+                * if seeking to superimpose many passive variables
+                * options for mixed data: [FAMD](https://en.wikipedia.org/wiki/Factor_analysis_of_mixed_data) or [MFA](https://en.wikipedia.org/wiki/Multiple_factor_analysis)
 
-    Observations included AFTER computation of the PCs
-    add variables (qualitative or quantitative) or observations to the PCA after it has been computed. Those variables or observations are called supplementary. 
-    transformed into scores using the loadings generated from analysis of the active variables?
-    
-http://www.sthda.com/english/wiki/principal-component-analysis-in-r-prcomp-vs-princomp-r-software-and-data-mining
-* Active individuals
+## Conclusion
 
+Previously, we were introduced to the main basic types of factorial analysis. Following this, we have delved a little bit into how these methods work, using the PCA as a general framework. Personally, I found this process to be instructive and have gained significant insight and confidence that I feel that I can apply to correctly interpreting factorial methods. In the next post we will cover a few more areas before diving into examples :smile:. 
