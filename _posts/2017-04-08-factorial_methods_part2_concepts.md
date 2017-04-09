@@ -121,7 +121,7 @@ A vector that represents transformation of the individual observations (rows) so
 
 ### 2) Contributions:	
 
-This section attempts to deal specifically with components that relate one aspect of the <b><i>Analysis</i></b> to another. Therefore, in this section the terms importance, contribution, influence and impact are seen as conceptually interchangeable.
+This section attempts to deal specifically with components that relate one aspect of the <b><i>Analysis</i></b> to another. Therefore, in this section the terms importance, contribution, influence and impact are seen as conceptually interchangeable. Importantly, these contributions relate substantially to the interpretation of an <b><i>Analysis</i></b>.
 
 #### a. variable contribution (loadings<span class="superscript">2</span>)
 

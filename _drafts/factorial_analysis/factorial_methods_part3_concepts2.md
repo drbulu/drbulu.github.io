@@ -10,176 +10,159 @@ tags: [overview, factorial methods, dimension reduction, exploratory analysis, u
 ## Introduction
 
  previously [discovered]({{site.baseurl}}{%post_url 2017-04-01-factorial_methods_part1_overview%}#method-overview), different analyses 
-## Analysis computation (PCA)
 
-This section was one that I found necessary to tackle before fleshing out the other ideas in this post. This was because I realised that I had to have a good conceptual grasp of how <b>Analyses</b> are calculated. Here, I aim to use PCA as a lens to understand the inner workings of factorial analyses to alay potential confusion about their interpretation.
+using the same reference material covered [previously]({{site.baseurl}}{%post_url 2017-04-08-factorial_methods_part2_concepts%}#key-references-used)
 
-During the background reading that I did for the previous post, I discovered that PCA can be computed via a number of means. I identified four different methods from looking at the various sections of the [Wikipedia entry](https://en.wikipedia.org/wiki/Principal_component_analysis#Derivation_of_PCA_using_the_covariance_method) of the PCA Wikipedia page and also by checking out [this answer](http://stats.stackexchange.com/a/79072) at stackexchange that in turn cited [this paper](http://www.sciencedirect.com/science/article/pii/S0169743997000105?via%3Dihub). In addition, three of these methods are summarised [here](https://learnche.org/pid/latent-variable-modelling/principal-component-analysis/algorithms-to-calculate-build-pca-models). Ignoring the fact that each method potentially manifests as "classical" or "kernel" forms, the methods are:
+https://www.utdallas.edu/~herve/abdi-awPCA2010.pdf
 
-* [Eigenvalue Decomposition (EVD)](https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix)
-* [Single Value Decomposition (SVD)](https://en.wikipedia.org/wiki/Singular_value_decomposition)
-* [Power iteration](https://en.wikipedia.org/wiki/Principal_component_analysis#Iterative_computation)
-* [Non-linear iterative partial least squares (NIPALS)](https://en.wikipedia.org/wiki/Principal_component_analysis#The_NIPALS_method)
+## Visualisation
 
-The common theme: decomposition of either the correlation, covariance or data matrix by some sort of [matrix decomposition](https://en.wikipedia.org/wiki/Matrix_decomposition) approach to obtain pairs of entities that describe the principal components, such that each principal component is described by a pair of entities consisting of one <u>value</u> and one <b>vector</b>. As far as I can determine:
+### 1. Projections
 
-* EVD create eigenvalues and eigenvectors to be used for PCA from a square correlation matrix. 
-* SVD seems to be an extension of EVD to rectanglar matrices such that produces singlar values and singlular vectors that are related to the outputs of EVD.
+* transformation of data matrix to PCs
+    * compression: projection of high dimension data to lower dimension PCs
+    * via loading matrix
+    * applied to active and passive observations
+* scores for each PC created
+    * by each PC's loading vector
+    * applied to the same data matrix
 
-Presently, I am not sure whethere the NIPALS and Power methods produce eigenvalues and eigenvectors. However, NIPALS seems to be able to handle missing values as stated [here](http://pbil.univ-lyon1.fr/ade4/ade4-html/nipals.html), and discussed [here](http://stats.stackexchange.com/questions/35561/)). Therefore, it seems to me that the computation of a PCA, regardless of the method employed, can be generally described as producing pairs of the following elements:
+### 2. Plotting
 
-* matrix **decomposition value:** represent the proportion of the variability (variance) explained by a given principal component.
-* matrix **decomposition vector:** represent the relative importance of each variable in a given principal component.
+#### a) overview
 
-However, I will be using the terms eigenvalues and eigenvectors as the general term for simplicity. 
+* Examine the data represented by PCs
+* Groups of PCs can be plotted on a cartesian plane
+    * $PC_X$: PC assigned to x-axis
+    * $PC_Y$: PC assigned to y-axis
+    * $PC_Z$: PC assigned to z-axis
+* PCs with the <b>most</b> inertia are plotted
+    * mostly 2D (x, y) coordinates
+    * sometimes 3D (x, y, z) coordinates
+        * less visually interpretable
+        * note: > 3D $\ne$ plottable
 
-Incidentally, this might be simplistic, but it seemed to me that the eigenvalue seems to be a scalar that is the [greatest common divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor) of all of the elements in the eigenvector. I mention it because the idea made some sense to me as a neat rationalisation for why eigenvalues exist, because the eigenvalue is potentially derived from the unit scaling of the eivenvector. That said, I'm not sure whether this is the actual mathematical explanation.
+#### b) variables
 
-## Analysis terminology
+* <b><i>aim:</i></b> displayes the correlation/contribution of variables and plotted PCs
+* <b><i>coordinates:</i></b> variable <u>loadings</u>
+* <b><i>representation:</i></b>
+    * arrows from origin (0, 0) to variable locus ($PC_X, PC_Y$)
+    * points <b>away</b> from the origin
+* <b><i>groups</i></b> of variables share:
+    * similar direction because they are correlated
+    * possibly &#8805; 1 common underlying (latent) variable(s)
 
-### key references used:
+#### c) scores
 
-First got the idea of checking out terminology [here](http://www.sthda.com/english/wiki/principal-component-analysis-in-r-prcomp-vs-princomp-r-software-and-data-mining), however, my subsequent search for a clear and standardised interpretation of these elements on the interwebs (sic) was more confusing than I hoped. Consequently, I reverted to my academic bias and sought to collect a small number of authoritative sources that communicate the concepts that I need to acquire with consistent semantics.
+* <b><i>aim:</i></b> position and relationship of observations relative to plotted PCs
+* <b><i>coordinates:</i></b> observation <u>scores</u>
+* <b><i>representation:</i></b> 
+    * separate data points 
+    * each representing one observation
+* <b><i>groups</i></b> of observations share: 
+    * important characteristics 
+    * connections with specific variables
 
-To this end, I decided to read through the work of [Abdi (2010)](https://www.utdallas.edu/~herve/abdi-awPCA2010.pdf), [Risvik (2007)](https://folk.uio.no/henninri/pca_module/pca_nipals.pdf) and [Wold et. al. (1987)](http://www.sciencedirect.com/science/article/pii/0169743987800849) as a first step to familiarising myself with the essential characteristics of PCA and other factorial methods.
+### 3. Circle of correlations
 
-Again, the overall aim is to <b>distill</b> these concepts into their most basic definitions as a reference point for further exploration.
+Variable importance = 1/dist from circle origin
+Indicates how well the plotted PCs represent the data
+If perfect: 
+PCs perfectly represent data
+loadings position ON circumference
+Else: 
+More PCs required to perfectly represent data
+loadings position inside circle
 
-### 1) The basics
+[hi]({{site.baseurl}}{% post_url 2017-04-08-factorial_methods_part2_concepts %}#active-vs-passive)
 
-#### a. data matrix:
+### 4. Suppelemtary information
 
-representation of the input dataset as a matrix object (<b><i>n</i></b> &times; <b><i>p</i></b>) consisting of:
+## Modelling (will handle separately after initial examples!)
 
-* <b><i>n</i></b> rows of observations
-* <b><i>p</i></b> columns of variables
 
-#### b. inertia: 
+https://en.wikipedia.org/wiki/Fixed_effects_model
 
-The inertia of a variable is a representation of the amount of the variance that is explained by this variable.
+https://en.wikipedia.org/wiki/Random_effects_model
 
-* variables in question are the PCs
-* inertia embodied by the the eigenvalue
-* total inertia = inertia of the whole dataset
-* conceptually: inertia = eigenvalue = sum of squares of all observation scores
-* also represented as a % of the total inertia
+http://stats.stackexchange.com/questions/34509/concepts-of-mixed-effects-in-statistics-and-econometrics-how-to-cope-with-them
 
-Basically, inertia measures the amount of <b><i>information</i></b> contained within a variable (as far as I can tell). Further, as noted [here](http://stats.stackexchange.com/questions/207642/correct-way-to-report-the-results-of-a-correspondence-analysis-and-a-principal-c), if a few PCs account for most of the inertia in the dataset:
+https://msdn.microsoft.com/en-us/library/azure/dn913102.aspx
 
-* there is a lot of correlation between the input variables
-* i.e. there is a lot of <u>redundant</u> information
 
-#### c. centre of gravity: 
+1. Acknowledge the Fixed effects and random effects paradigms and ambiguity
 
-Represents the centre of gravity (mean) of the rows: 
-
-* of the original data matrix
-* synonyms: barycentre or centroid
-* a vector of length <b><i>p</i></b>
-* can be used to represent group centres (e.g.  [here](http://www.sthda.com/english/wiki/principal-component-analysis-in-r-prcomp-vs-princomp-r-software-and-data-mining#supplementary-qualitative-variables))?
-
-#### d. loadings: 
-
-1. loading:
-* the correlation between a given variable and a particular PC
-* represents how much of a variable was used to create that PC
-2. loading matrix:
-* a matrix (<b><i>p</i></b> &times; <b><i>p</i></b>) of the loadings that represents the construction of the PCs by the <b><i>Analysis</i></b>
-* rows (loading <b><i>vectors</i></b>): represent computed PCs (&#8804; <b><i>p</i></b>)
-* columns: represent the <b><i>p</i></b> input variable loadings for each PC
-
-#### e. Scores 
-
-A vector that represents transformation of the individual observations (rows) so that they can be plotted on the PC cartesian space:
-
-* values of the PC variables for each row
-* Vector contains <b><i>n</i></b> elements (one element per observation)
-* 1 vector of scores per PC
-
-### 2) Contributions:	
-
-This section attempts to deal specifically with components that relate one aspect of the <b><i>Analysis</i></b> to another. Therefore, in this section the terms importance, contribution, influence and impact are seen as conceptually interchangeable.
-
-#### a. variable contribution (loadings<span class="superscript">2</span>)
-
-* the contribution (%) of a given variable to a particular PC
-    * proportion of a variable's variance that is explained
-    * derived from <b>loadings<span class="superscript">2</span></b>
-
-#### b. observation contributions: 
-
-* The importance of an specific observation <b><i>i</i></b> to a particular PC (l)
-* calculated using:
-    * the PC's eivenvalue ($\lambda_l$)
-    * observation's score, which we'll call $o_{i,l}$ (observation <i>i</i> for component <i>l</i>)
-
-$$ctr_{i,l} = { o_{i,l} \over \lambda_l } = { o_{i,l} \over \sum^n_1 o^2_{i,l} }$$
-
-> Note: $\lambda_l$ = $\sum^n_1 o^2_{i,l}$
-
-#### c. PC contributions (cos<span class="superscript">2</span>):
-
-* The importance of an specific PC to a particular observation
-    * measured by the square cosine (cos<span class="superscript">2</span>)
-    * i.e. correlation between an observation and a PC
-* indicates which PCs are important to interpreting an observation
-
-### 3) Active vs. Passive
-
-The calculation and interpretation of a given <b><i>Analysis</i></b> potentially involve two types of inputs: active and passive. Therefore, it is useful to have a clear idea of what these constituents are.
-
-Related to this, with regards to variables, I use contrast the terms <i>compatible</i> and <i>incompatible</i>. This indicates whether a variable can be used in the computation of PCs by the <b><i>Analysis</i></b> in question.
-
-* compatible: e.g. <b>quantitative</b> variables as input to PCA 
-* incompatible: e.g. PCA input variables <u>cannot</u> be <b>qualitative</b>
-
-#### a. active inputs:
+2. Clarify the semantics:
+a) Descriptive analysis: 
+    * observations represent the population to study
+    * 
     
-Inputs used to calculate the PCs for a given <b><i>Analysis</i></b>:
+    Model evaluation:
 
-* Active variables: 
-    * Input variables <u>compatible</u> for computation of the PCs
-    * $\sum loadings^2 = 1$
+    
+b) Predictive analysis
+    * observatiosn represent a valid sample of the population
+    
+    n most applications, the set of observations represents
+asamplefromalargerpopulation.Inthiscase,the
+goal is to estimate the value of
+new
+observations from
+this population. This corresponds to a
+random effect
+model.
 
-* Active individuals: 
-    * Input observation rows for computation of the PCs
-    * each row contains measurements of the <b><i>p</i></b> active variables
+Model evaluation:
+* can't use parametric options (data != population)
+* use computer based resampling: e.g.
+    * bootstrapping
+    * cross-validation
+* calculated based on predicted residual sum of squares (PRESS)
+    
 
-#### b. supplementary inputs:
+## Component Selection
 
-Inputs included <u>after</u> the calculation of PCs by the <b><i>Analysis</i></b>. Also referred to as <i>passive</i>:
+### a) Scree Plot
 
-* passive observations
-    * not used to compute the PCs
-    * row contains measurements of the same <b><i>p</i></b> active variables
-    * scores for calculated using the loading matrix calculated from the active variables
-     * <b style="color:red;">Machine learning note:</b> passive observations <b>must</b> be preprocessed using the data centroids (means) and/or standard deviations used to preprocess the <b>active</b> variables (as explained in week 2 of [this](https://www.coursera.org/learn/practical-machine-learning#syllabus) course).
+* subjective measure based on variance explained by PCs
+* e.g. regain PCs with above average variance explained
+* average = 1 / total number of PCs
 
-* passive variables
-    * Additional variables measured for active (and possibly passive) observations
-    * General aim: add further insight to the <b><i>Analysis</i></b>
-        * add new insight to active variables
-        * find where passive variables fit in the active analysis context
-    * a) <u>compatible</u> variables:
-        * Measures correlation between active PCs and variables
-        * Loadings computed between passive variable(s) and active PCs
-            * i.e. correlation coefficients
-            * elable plotting of these variables
-            * Supplementary $\sum loadings^2 \ne 1$
-    * b) <u>incompatible</u> variables:
-        * some analyses have input variables restrictions:
-            * PCA: quantitative ONLY
-            * MCA: qualitative ONLY
-        * indirect integration:
-            * cannot be computed directly by the <b><i>Analysis</i></b>
-            * but can be superimposed onto the analysis e.g <u>plotting</u>:
-                * colour by variable
-                * shape by variable
-                * group by varible (e.g. circle scores by group as shown [here](http://www.sthda.com/english/wiki/principal-component-analysis-in-r-prcomp-vs-princomp-r-software-and-data-mining#supplementary-qualitative-variables))
-            * consider versatile <b><i>Analysis</i></b> alternative:
-                * if seeking to superimpose many passive variables
-                * options for mixed data: [FAMD](https://en.wikipedia.org/wiki/Factor_analysis_of_mixed_data) or [MFA](https://en.wikipedia.org/wiki/Multiple_factor_analysis)
 
-## Conclusion
+### b) Estimate model quality
 
-Previously, we were introduced to the main basic types of factorial analysis. Following this, we have delved a little bit into how these methods work, using the PCA as a general framework. Personally, I found this process to be instructive and have gained significant insight and confidence that I feel that I can apply to correctly interpreting factorial methods. In the next post we will cover a few more areas before diving into examples :smile:. 
+* reduce overfitting
+* methods
+    * analyse residuals PRESS or RESS
+    * bootstrapping
+    * crossvalidation
+    
+### c) PC Confidence intervals (CIs)
+* occurs after selection of PCs
+* possible via bootstrapping
+
+## Rotations
+
+* Aim: Facilitate easier interpretation of the <b><i>Analysis</i></b> 
+* Method: 
+    * rotation of the <u>retained</u> PCs
+        * PC selection forms a subspace of the <b><i>Analysis</i></b>
+        * therefore subspace selection affects rotation results
+    * total inertia is not affected
+* Types
+    * Orthogonal
+        * e.g. Varimax
+        * reduces the # PCs that a variable can be associated with
+        * enhances variable contrast: <b>+ve</b> vs. <b>-ve</b> loadings
+    * Oblique
+        * e.g. Promax
+        * relaxes orthogonality constraints
+        * fuses highly correlated PCs
+* warning:
+    * potential impact on analysis fidelity
+        * sacrifices properties of original unrotated analysis
+        * reduces reproducibility
+    * potential outcome
+        * can paradoxically reduce interpretability
+        * model less strongly represents data
