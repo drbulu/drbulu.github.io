@@ -64,7 +64,7 @@ Incidentally, this might be simplistic, but it seemed to me that the eigenvalue 
 
 First got the idea of checking out terminology [here](http://www.sthda.com/english/wiki/principal-component-analysis-in-r-prcomp-vs-princomp-r-software-and-data-mining), however, my subsequent search for a clear and standardised interpretation of these elements on the interwebs (sic) was more confusing than I hoped. Consequently, I reverted to my academic bias and sought to collect a small number of authoritative sources that communicate the concepts that I need to acquire with consistent semantics.
 
-To this end, I decided to read through the work of [Abdi (2010)](https://www.utdallas.edu/~herve/abdi-awPCA2010.pdf), [Risvik (2007)](https://folk.uio.no/henninri/pca_module/pca_nipals.pdf) and [Wold et. al. (1987)](http://www.sciencedirect.com/science/article/pii/0169743987800849) as a first step to familiarising myself with the essential characteristics of PCA and other factorial methods.
+To this end, I decided to read through the work of [Abdi and Williams (2010)](https://www.utdallas.edu/~herve/abdi-awPCA2010.pdf), [Risvik (2007)](https://folk.uio.no/henninri/pca_module/pca_nipals.pdf) and [Wold et. al. (1987)](http://www.sciencedirect.com/science/article/pii/0169743987800849) as a first step to familiarising myself with the essential characteristics of PCA and other factorial methods.
 
 Again, the overall aim is to <b>distill</b> these concepts into their most basic definitions as a reference point for further exploration.
 
