@@ -1,0 +1,25 @@
+---
+title: "Factorial Methods: Introduction to PCA"
+series: "Factorial Analysis Intro"
+layout: post
+math_symbols: true
+categories: [data science]
+tags: [overview, factorial methods, dimension reduction, exploratory analysis, unsupervised learning, PCA]
+---
+
+[this tutorial](http://www.sthda.com/english/wiki/principal-component-analysis-how-to-reveal-the-most-important-variables-in-your-data-r-software-and-data-mining), with some background of the data covered [here](http://www.sthda.com/english/wiki/factominer-and-factoextra-principal-component-analysis-visualization-r-software-and-data-mining). 
+
+
+they also have background on [other factorial methods](http://www.sthda.com/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization)
+
+
+[FactoMineR](https://cran.r-project.org/web/packages/FactoMineR/index.html) requires R version 3.3.0 and above for successful installation, a "small" problem when you are on v 3.2.3.
+
+sudo apt-get update; sudo apt-get install r-base; sudo apt-get install r-base-dev
+
+```{r, install_snippet, eval=FALSE}
+# requires
+install.packages("FactoMineR")
+install.packages("factoextra")
+```
+
