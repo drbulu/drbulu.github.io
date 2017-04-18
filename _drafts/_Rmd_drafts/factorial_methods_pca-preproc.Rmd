@@ -1,0 +1,99 @@
+---
+title: 'Factorial Methods: Preprocessing for PCA'
+layout: post
+math_symbols: yes
+series: Factorial Analysis Intro
+tags:
+- overview
+- factorial methods
+- dimension reduction
+- exploratory analysis
+- unsupervised learning
+- PCA
+categories: data science
+---
+
+## Introduction
+
+[this tutorial](http://www.sthda.com/english/wiki/principal-component-analysis-how-to-reveal-the-most-important-variables-in-your-data-r-software-and-data-mining), with some background of the data covered [here](http://www.sthda.com/english/wiki/factominer-and-factoextra-principal-component-analysis-visualization-r-software-and-data-mining). 
+
+
+they also have background on [other factorial methods](http://www.sthda.com/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization)
+
+[FactoMineR](http://factominer.free.fr/classical-methods/principal-components-analysis.html) also have a walkthrough of this example on their website.
+
+
+## Data analysis
+
+### Analysis setup
+
+```{r, setup_chunk, echo=FALSE}
+# load packages
+library("FactoMineR")
+library("factoextra")
+# convenience helper
+prettyTable = function(...) knitr::kable(...)
+
+# load data
+data(decathlon2)
+
+# Extract active variables/individuals for PCA
+activeDecathlon2 <- decathlon2[1:23, 1:10]
+```
+
+### Data exploration
+
+Brief
+
+original dataset
+```{r}
+prettyTable(head(decathlon2))
+```
+
+active data subset
+```{r}
+prettyTable(head(activeDecathlon2))
+```
+
+### Data preparation
+
+```{r}
+## save as a normalisation or preprocessing metadata data.frame
+dataPreproc = as.data.frame(rbind(
+    mean = colMeans(activeDecathlon2),
+    sd = sapply(1:length(activeDecathlon2), 
+        FUN = function(x) sd(activeDecathlon2[,x]))
+))
+
+names(dataPreproc) = names(activeDecathlon2)
+
+## Preprocessing - Standard normalisation
+preprocessPCA = function(pcaData, preProcMeta){
+    for(i in 1:length(pcaData)){
+        pcaData[,i] = (pcaData[,i] - preProcMeta[1,i]) / preProcMeta[2,i]
+    }
+    return(pcaData)
+}
+
+## Apply preprocessing to active dataset
+preprocDecathlon2 = preprocessPCA(pcaData = activeDecathlon2, 
+    preProcMeta = dataPreproc)
+```
+
+### Run PCA
+
+note: need to set scale.unit = False in order to apply your own preprocessing, otherwise, the data will be scaled to  unit variance as per **`?PCA`**.
+
+```{r}
+### Run PCA from factoMiner and inspect output
+pcaResult <- PCA(preprocDecathlon2, scale.unit = F, graph = FALSE)
+print(pcaResult)
+```
+
+## Conclusion
+
+Next post... more details about the implementations
+
+Then next post... preprocessing implications
+
+

@@ -66,7 +66,7 @@ This section aims to summarise some of the concepts related to the visualisation
     * important characteristics 
     * connections with specific variables
 
-### d) Circle of Correlations (CoC)
+#### d) Circle of Correlations (CoC)
 
 * A circle of unit radius (r = 1), centred at plot origin (0, 0)
 * Measures the importance of a variables to the plotted PCs

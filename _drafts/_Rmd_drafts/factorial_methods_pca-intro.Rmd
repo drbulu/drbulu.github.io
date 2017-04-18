@@ -1,25 +1,207 @@
 ---
-title: "Factorial Methods: Introduction to PCA"
-series: "Factorial Analysis Intro"
+title: 'Factorial Methods: Introduction to PCA'
 layout: post
-math_symbols: true
-categories: [data science]
-tags: [overview, factorial methods, dimension reduction, exploratory analysis, unsupervised learning, PCA]
+math_symbols: yes
+series: Factorial Analysis Intro
+tags:
+- overview
+- factorial methods
+- dimension reduction
+- exploratory analysis
+- unsupervised learning
+- PCA
+categories: data science
 ---
 
-[this tutorial](http://www.sthda.com/english/wiki/principal-component-analysis-how-to-reveal-the-most-important-variables-in-your-data-r-software-and-data-mining), with some background of the data covered [here](http://www.sthda.com/english/wiki/factominer-and-factoextra-principal-component-analysis-visualization-r-software-and-data-mining). 
+## Introduction
 
+In this post we will taking a brief look at how PCA works in practice using a simple, guided example. The dataset that we will be looking at is called **`decathlon2`** (from the **`factoextra`** package), which is a subset of **`decathlon`** (from the **`FactoMineR`** package). This tutorial takes its inspiration from a couple of posts at [www.sthda.com](www.sthda.com), namely [this one](http://www.sthda.com/english/wiki/principal-component-analysis-how-to-reveal-the-most-important-variables-in-your-data-r-software-and-data-mining) and also [this one](http://www.sthda.com/english/wiki/factominer-and-factoextra-principal-component-analysis-visualization-r-software-and-data-mining). 
 
-they also have background on [other factorial methods](http://www.sthda.com/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization)
+In light of these more detailed guides, this post aims to provide a reasonable summary of the implementation and interpretation of a concrete PCA implementation based on the general guidelines described in the previous <i>"Core Concepts"</i> of this series. Naturally, more depth will be covered later on as specific issues of importance manifest themselves, i.e. ones that either substantially enhance the ability to interpret the PCA or help to avoid critical misinterpretation of the analysis.
 
+As alluded to [here]({{site.baseurl}}{% post_url 2017-04-01-factorial_methods_part1_overview %}#factominer-implementation) in the first post in this series, we will be using the [**`FactoMiner`**](http://factominer.free.fr/index.html) package to conduct the different factorial methods of interest. The simple reason is that this package represents a useful catalogue of all these techniques. This means that I only need this source to access all of these techniques. Another important consequence is that the implementation and interpretation (really important) of each technique will be guided by consistent terminology which in turn facilitates knowledge transfer as I cover other methods.
 
-[FactoMineR](https://cran.r-project.org/web/packages/FactoMineR/index.html) requires R version 3.3.0 and above for successful installation, a "small" problem when you are on v 3.2.3.
+The gentle folks at [www.sthda.com](www.sthda.com) also came up with the [**`factoextra`**](http://www.sthda.com/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization) for the consistent visualisation of the results from various factorial methods implemented in multiple R packages. This convenience, coupled with its foundation on [ggplot2](https://cran.r-project.org/web/packages/factoextra/index.html) and parameter flexibility, makes **`factoextra`** my first choice for the visualisation of these analyses.
 
-sudo apt-get update; sudo apt-get install r-base; sudo apt-get install r-base-dev
+Before we get started, the obligatory installation instructions for the "production" versions of the aforementioned packages:
 
 ```{r, install_snippet, eval=FALSE}
-# requires
 install.packages("FactoMineR")
 install.packages("factoextra")
 ```
 
+## Analysis setup
+
+This brief section describes the setup phase of the analysis. The code chunk below details how we load the main packages: **`FactoMineR`** and **`factoextra`**. The additional packages **`grid`** and **`gridExtra`** assist with visualisation by giving us the power to flexibly group the plots that we will need to visualise. Lastly, the **`prettyTable()`** helper function simplifies the visualisation of tables neatly using **`knitr`**.
+
+```{r, setup_chunk, message=FALSE}
+# load packages: primary analysis and visualisation
+library("FactoMineR")
+library("factoextra")
+
+# load packages: additional visualisation
+library(grid)
+library(gridExtra)
+
+# convenience helper to create pretty tables :)
+prettyTable = function(...) knitr::kable(...)
+```
+
+## Data analysis
+
+Now that we are setup, the first step in the analysis proper is to subset the loaded data to only the "active" variables and observations that we will use to build a model of the data using PCA.
+
+```{r, data_prep}
+# load data
+data(decathlon2)
+
+# Extract active variables/individuals for PCA
+activeDecathlon2 <- decathlon2[1:23, 1:10]
+```
+
+The prepared data can then be analysed using the `PCA()` function from **`FactoMineR`**, and the resulting object can be inspected using `print()`.
+
+```{r, run_PCA}
+### Run FactoMineR's PCA implmeentation on the prepared data subset
+pcaResult <- PCA(activeDecathlon2, scale.unit = TRUE, graph = FALSE)
+```
+
+The **`graph`** parameter is set to **`FALSE`** as we will display the outputs of the analysis later using **`factoextra`** when required.
+
+preprocessing note: default for the **`scale.unit` ** parameter is **`TRUE` **, the data will be scaled to  unit variance as per **`?PCA`**.
+note: need to set scale.unit = F in order to apply your own preprocessing. Not relevant now, but will be useful to keep in mind here.
+
+## Analysis visualisation
+
+Brief
+
+original dataset
+```{r}
+prettyTable(head(decathlon2))
+```
+
+active data subset
+```{r}
+prettyTable(head(activeDecathlon2))
+```
+
+
+
+```{r}
+
+### NEED TO BREAK UP THIS LARGE CHUNK ###
+
+# a. plot scree and biplot
+# i. create list of ggplot objects
+pcaPlotVarianceSum = function(pca){
+    require(ggplot2)
+    plotData = data.frame(
+        pcData = 1:length(pca$eig[,3]), 
+        varData = pca$eig[,3])
+    titles = c(main="Cummulative Variance", x="Dimensions", 
+        y = "Cummulative Variance Explained (%)")
+    varPlot = ggplot(plotData) + aes(x=as.factor(pcData), y = varData) + 
+        geom_bar( stat="identity", fill="steelblue") + 
+        # modify aesthetics to change x-axis back to numeric
+        geom_line(aes(x = pcData), linejoin = "mitre") + geom_point() +
+        labs(title = titles[1], x = titles[2], y = titles[3]) +
+        theme_minimal()
+    return(varPlot)
+}
+    
+pcaFigList01 = list(
+    scree = fviz_screeplot(pcaResult, ncp=10),
+    cummulative = pcaPlotVarianceSum(pcaResult)
+)
+# ii. prepare grid graphics object for plotting
+pcaFig1Grob = arrangeGrob(grobs=pcaFigList01, ncol = 2)
+
+# b. plot PCA biplot
+pcaFig02Biplot = fviz_pca_biplot(pcaResult, col.var = "red", 
+    col.ind="blue", label = "var", repel = T)
+
+# c. plot individuals and variables
+# Note: needed to add custom circle of correlation (radius = 1) at (0, 0)
+# h/t @ http://stackoverflow.com/a/20904977
+corCircle <- annotate("path", color = "red", alpha = 0.4,
+   x=0+1*cos(seq(0,2*pi,length.out=100)),
+   y=0+1*sin(seq(0,2*pi,length.out=100)))
+
+pcaFigList02 = list(
+    pca_var = fviz_pca_var(pcaResult, col.var="red", repel = T,
+        xlim=c(-1,1), ylim=c(-1,1)) + corCircle,
+    ind = fviz_pca_ind(pcaResult, col.ind="blue", repel = T,
+        ylim=c(-3,3)) + theme_minimal()
+)
+pcaFig3Grob = arrangeGrob(grobs=pcaFigList02, ncol = 2)
+
+# c. Plot contributions of individuals to PCs
+textTheme = theme(axis.text.x = element_text(angle = 90))
+pcaFigList03 = list(
+    pc1 = fviz_contrib(pcaResult, choice = "ind", axes = 1) +
+        theme_minimal() + textTheme,
+    pc2 = fviz_contrib(pcaResult, choice = "ind", axes = 2) +
+        theme_minimal() + textTheme,
+    pc12 = fviz_contrib(pcaResult, choice = "ind", axes = 1:2) +
+        theme_minimal() + textTheme
+)
+pcaFig4Grob = arrangeGrob(grobs=pcaFigList03, ncol = 2)
+```
+
+### Results analysis
+
+#### a) Information content overview
+
+```{r, draw_fig1, fig.height=4, fig.width=8}
+grid.draw(pcaFig1Grob)
+```
+
+Basic interpretation of results according to 
+
+
+The background of the previous posts
+
+#### b) Biplot
+
+```{r, draw_fig2, fig.height=6, fig.width=6, fig.align="center"}
+pcaFig02Biplot
+```
+
+#### c) Variables and individuals
+
+```{r, draw_fig3, fig.height=4, fig.width=8}
+grid.draw(pcaFig3Grob)
+```
+
+[annotated circle](http://stackoverflow.com/a/20904977) was the simplest answer
+
+#### d) Contributions (for next post)
+
+```{r, draw_fig4, fig.height=6, fig.width=8}
+grid.draw(pcaFig4Grob)
+```
+
+also check out ISLR chapter 10 for more info on interpretation
+
+### Supplementary variables
+
+http://www.sthda.com/english/wiki/factominer-and-factoextra-principal-component-analysis-visualization-r-software-and-data-mining
+
+"Visualize supplementary quantitative variables" section
+
+"Supplementary qualitative variables" section
+
+
+## Conclusion
+
+Next post... more details about the implementations
+
+Then next post... preprocessing implications
+
+The complete **'decathlon'** dataset is analysed in great detail at the FactoMineR website as part of this [PCA analysis walkthrough](http://factominer.free.fr/classical-methods/principal-components-analysis.html).
+
+## Session Info
+
+```{r, session_info}
+sessionInfo()
+```
