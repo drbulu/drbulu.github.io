@@ -77,12 +77,12 @@ Brief
 
 original dataset
 ```{r}
-prettyTable(head(decathlon2))
+prettyTable(head(decathlon2, 2))
 ```
 
 active data subset
 ```{r}
-prettyTable(head(activeDecathlon2))
+prettyTable(head(activeDecathlon2, 2))
 ```
 
 
