@@ -1,0 +1,178 @@
+---
+layout: post
+title: "R Library Config"
+published: true
+math_symbols: false
+categories: [blogging, config]
+tags: [R, package management, mental note, config, setup]
+---
+
+<style>
+    .inline {
+        font-weight:bold;
+    }
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=F)
+```
+
+## Introduction
+
+Have you ever been working on a project and tried to call an R package that you knew was installed on your system... only to discover that "R says NOOOOOO!"? Something along the lines of:
+
+```{r, pkg_fail_demo}
+library(allYourBaseR)
+```
+
+Which results in the following error:
+
+<pre style="color:red">
+Error in library(allYourBaseR) : 
+  there is no package called ‘allYourBaseR’
+</pre>
+
+Obviously, the package <code class="inline">allYourBaseR</code> doesn't exist (to my knowledge at least), but it does illustrate the nature of the problem at hand.
+
+What was a simple problem (and solution ultimately) turned into a slightly rambling jaunt into the realm of R packaeg management. The reader is invited to join me in my journey, however, the <strike>recklessly</strike> impatient or time-constrained may feel free to skip to the [implemented solution](#implementation)!
+
+## Strategy/Background
+
+At this point I could have Googled something like "R packages no longer found" or something of the sort, and then proceeded to trawl through the interwebs and try to cobble together a possible <strike>hack</strike> solution.
+
+Instead, I opted to figure out how my R package system was setup and fix it in such a way that future upgrades to R didn't undo my <strike>unstable hack</strike> hard-earned solution.
+
+So... after a bit of digging, and some help from StackOverflow [here](https://www.stackoverflow.com/questions/2615128) and [here](https://www.stackoverflow.com/questions/11299083), in addition to the CRAN R manual sections on [installation](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Testing-a-Unix_002dalike-Installation) and [add-ons](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Add_002don-packages).
+
+1) The first thing that I needed to do was to figure out the location(s) that my R installation queries when searches for installed packages. This can be achieved in the R console using the <code class="inline">.libPaths()</code> function. 
+
+* This function returns a list of the directories where R is configured to search for installed packages.
+* New locations can be added by calling <code class="inline">.libPaths()</code> with the new location's path as a string argument i.e. <code class="inline">.libPaths(<span style="color:blue;">"path/to/new/library/folder"</span>)</code>.
+* These locations should also be contained within the <code class="inline">.Library.site</code> variable.
+
+```{r, checkLibPath}
+# 1. Check the existing set of library source locations
+.libPaths()
+
+# 2. Add one or more new library locations as a character vector
+.libPaths(newLibLocationVec)
+```
+
+2) The next thing that I had to do was to figure out if any of these locations (because my search with <code class="inline">.libPaths()</code> returned multiple matches) was a subdirectory of my R installation, which can be located in the R console by caling the <code class="inline">R.home()</code> function. 
+
+* Essentially, this was likely to be the default location for the installation of new packages, which can be found (<b>R_HOME/library</b> as the [manual](https://cran.r-project.org/doc/manuals/r-release/R-admin.html#Add_002don-packages) implied).
+* Of course, an easy way of finding this out is by checking the <code class="inline">.Library</code> variable.
+
+```{r, defaultLibPath}
+# 1. Location of default R installation
+R.home()
+
+# 2. Finding default library usin "R.home()"
+file.path(R.home(),"library")
+
+# 3. The easy way to find default library
+.Library
+```
+
+* However, if R (for whatever reason) does not have the admin priviledges to the R installation directory (<b>R_HOME</b>), new addon packages will be installed in other locations, which should all be listed in <code class="inline">.libPaths()</code>, also accessible in <code class="inline">.Library.site</code>.
+
+3) Clean up required (<b style="color:green;">Optional</b>): From steps 1 and 2 I realised that my additional packages were not in the home installation directory. Worse still, the packages were installed in automatically assigned locations based on the current version of R. If your system is properly setup you will not have to do this kind of thing.
+
+* <b style="color:red; font-weight:italics;">Problem</b>:This was not good because:
+    * Each new R upgrade seemed to cause reinstallation of all packages in new directories. This seems an aweful waste of disk space :neutral_face:.
+    * Any fix that I might come up with may be rendered obsolete by the next R installation upgrade... definitely not good :frowning:.
+* <b style="color:green; font-weight:italics;">Solution</b>: Create a new custom library folder that R could access to install new packages as I need them:
+    * Copy all of my installed packages into a new custom directory <b>R/libs/</b> that was in a location that R could access to install new packages. 
+    * Then I deleted all of the other duplicate library locations.
+
+4) We then need to know where the <b>Rprofile.site</b> file is located, which is in the etc subdirectory of the R installation directory. This is the file that we will need to modify in order to properly configure our package library locations so that we can more easily i) access installed packages and ii) manage installation new packages. <b>Rprofile.site</b> defines 
+
+* The default location
+
+```{r}
+# 1. location of the "Rprofile.site" file
+file.path(R.home(),"etc")
+
+# 2. Path to the "Rprofile.site" file
+file.path(R.home(),"etc", "Rprofile.site")
+```
+
+* User-defined Profiles: Information for the creation and use of your own profile file can be found by calling <code class=".inline">?Startup</code> (see [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Startup.html)) in the console. Presumably, the solution that I will outline can be implemented in this file as well:
+
+> "If this is unset, a file called <span style="color:green;">‘.Rprofile’</span> is searched for in the current directory or in the user's home directory (in that order). The user profile file is sourced into the workspace. "
+
+5) Check the selected destinations for the installation of new packages via <code class=".inline">install.packages()</code>. 
+
+* Querying <code class=".inline">?install.packages</code> reveals the following:
+
+> lib: character vector giving the library directories where to
+>          install the packages.  Recycled as needed.  If missing,
+>          defaults to the first element of ‘.libPaths()’.
+
+* Naturally, this made me question the actual utility of <code class=".inline">.Library.site</code>. However, I wasn't sure how much more digging was actually worthwhile.
+
+## Solution
+
+### Outline
+
+Now that I had an idea of how things work, I had the tools that I needed to craft a suitable solution to my problem that would likely be viable even after an update of my R installation. The basic idea is to:
+
+1) Move my current library list to my custom location "R/libs/" (in my home folder). One can choose a sultable location in "My Documents" or within some other suitable location on disk.
+
+2) Modify the <b>Rprofile.site</b> file in my default R installation. I have admin priviledges so I don't need to go the user profile route.
+
+a) Add my custom library path to the search list using <code class="inline">.libPaths(<span style="color:blue;">"path/to/new/library/folder"</span>)</code>. This call seems to be able to prevent the inclusion of duplicates out of the box, so this is helpful. Also, newly added paths seem show up as the first elements in later calls to <code class="inline">.libPaths()</code>.
+
+b) Append my custom library path to <code class="inline">.Library.site</code> so that the it is the first element in that variable. This is potentially useful as it might serve to make your custom library path the default installation location when calling <code class="inline">install.packages()</code>. My initial testing seems to indicate that this might be the case.
+
+c) Apply the updated values in order to make use of them. Frankly, this seems optional as far as I was able to determine with brief testing. However, this seemed to be recommended at the bottom of <code class="inline">?.libPaths</code> (as at R version 3.4.1) as cited below:
+    
+> Function .libPaths always uses the values of .Library and .Library.site in the base namespace. .Library.site can be set by the site in ‘Rprofile.site’, which should be followed by a call to .libPaths(.libPaths()) to make use of the updated value.
+
+### Implementation
+
+From the [outline](#outline) above, I came up with the following solution, which I appended to my existing <b>Rprofile.site</b> file as described in step for of the section [above](#strategy-background):
+
+```{r, implementation}
+# Note: obviously replace/set "myCustomLibraryPath" to your actual path of choice.
+
+# 1. Set custom library path. 
+# Note: automatically handles relative paths via normalizePath()
+.libPaths(myCustomLibraryPath)
+
+# 2. Set custom path as default library location
+# Note: must manually handle relative paths using normalizePath()
+.Library.site = append(normalizePath(myCustomLibraryPath), .Library.site)
+
+# 3. Apply changes (probably optional, uncomment if required)
+# .libPaths(.libPaths())
+
+# 4. remove the library path variable is set. it is unecessary if set.
+# obviously this step is also optional, A literal string should be 
+# simple enough to use.
+rm(myCustomLibraryPath)
+```
+
+Notes:
+
+* Oviously, you need to close and restart R or RStudio to apply these changes. Regarding RStudio, simply restarting the R session without restarting the IDE won't be enough.
+
+* Even with this solution, you might get the following warning but the new package should install into your custom library path without further issue:
+
+<pre>
+> install.packages("newPackage")
+Installing package into ‘myCustomLibraryPath’
+(as ‘lib’ is unspecified)
+</pre>
+
+
+* This solution should hopefully survive an update to my current R installation... we will see. It is simple enough to implement though.
+
+## Conclusion
+
+After a bit of trial and error, I was able to come to a neat and hopefully robust solution that should serve me well :smile:.
+
+## Further reading
+
+Along the way I encountered a lot of additional information by querying startup (<code class=".inline">?Startup</code>) and the functions mentioned in this post. There is also some useful information out there about how you can setup your own <b>.Rprofile</b> in [this article](https://www.r-bloggers.com/fun-with-rprofile-and-customizing-r-startup/) on R-Bloggers and [here](http://www.gettinggeneticsdone.com/2013/07/customize-rprofile.html). These also provide other interesting insights including recommendations regarding how to use profile files. Incidentally, one can find out how to remove entries from <code class="inline">.libPaths()</code> [here](http://r.789695.n4.nabble.com/Remove-site-path-from-libPaths-td4658680.html) and [here](https://stackoverflow.com/questions/15217758/remove-a-library-from-libpaths-permanently-without-rprofile-site). This additional information was of interest, but was not relevant so resolving my current problem. I suspect, however, that this information may yet become unexpectedly useful :alien:.
+
