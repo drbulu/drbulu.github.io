@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PostgreSQL setup "
+title: "PostgreSQL setup"
 published: true
 series: PostgreSQL intro
 categories: [data management, database]
