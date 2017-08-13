@@ -9,6 +9,30 @@ tags: [SQL, PostgreSQL, relational database, rdbms, tutorial]
 
 ## Introduction
 
+I have previously started series focused on learning how to use different SQL RDBMS platforms. So far, I have begun to explore [MySQL]({{ site.baseurl }}{% post_url 2016-12-01-mysql-intro-part1_overview %}) and [SQLite]({{ site.baseurl }}{% post_url 2017-08-02-sqlite_installation %}).
+
+The overall aim of these series is to develop a broad set of database management skills that I can apply in different ways as my data science career develops. To this end, I have started looking into data warehousing concepts from the perspective of using them as part of a data science toolkit for applications such as:
+
+* Designing data stores for bulk data processing
+* Understanding data warehouse design to facilitate effective data extraction and analysis.
+
+The material that I have taken a peek at is from the [Data Warehousing for Business Intelligence Specialization](https://www.coursera.org/specializations/data-warehousing) offered on the Coursera platform, which seems like a useful vehicle for aquiring my desired skillset. It turns out that the [third course](https://www.coursera.org/learn/dwrelational) in this series specifically requires access to the Oracle RDBMS plaftorm to facilitate the teaching of a number of concepts relating to business intelligence including specialised summary queries and analytic functions.
+
+## Installation strategy
+
+I am starting to get the hang of RDBMS installation, thanks to MySQL experience (pun intended). However, installation of the Oracle presented an interesting challenge as I began to do my background reading. Readers of my previous series would note that I am running the Linux OS, specifically [Ubuntu](https://www.ubuntu.com/), which is a well supported open source platform.
+
+This presents a challenge as the latest version of the Oracle Database platform, [version 12](https://docs.oracle.com/database/122/LADBI/operating-system-checklist-for-oracle-database-installation-on-linux.htm#LADBI-GUID-E5C0A90E-7750-45D9-A8BC-C7319ED934F0) as of the writing of this post, does not support Ubuntu and seems to be targeted towards enterprise Linux platforms.
+
+Given that I am planning to install the Oracle database software for purely personal and educational use, I am not interested in obtaining an [enterprise grade](https://www.oracle.com/database/enterprise-edition/index.html) platform with the associated "enterprise price tag".
+
+Enter the [Oracle Database Express Edition (XE)](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html) (currently at version 11), a more lightweight, streamlined version of the Oracle database that is free and targeted for educational and experimental use. There are a number of product [usage restrictions](http://docs.oracle.com/cd/E17781_01/install.112/e18802/toc.htm#XEINL116) that come with it, but these should not affect my intended usage. Cool, so Oracle Database XE 11 should support Ubuntu right? Not really, according to the [system requirements](http://docs.oracle.com/cd/E17781_01/install.112/e18802/toc.htm#BABDHJHB).
+
+
+
+<br/><br/><br/>
+
+
 Reference-style links refresher: https://daringfireball.net/projects/markdown/syntax#link
 https://stackoverflow.com/questions/32755396/does-jekyll-suport-global-markdown-reference-links
 https://stackoverflow.com/questions/39601358/jekyll-unhide-reference-style-links-on-github-pages
@@ -19,7 +43,12 @@ For the third course
 
 [XE edition](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html)
 
-* SQL Developer install (official): http://docs.oracle.com/database/sql-developer-17.2/RPTIG/installing-sql-developer.htm#RPTIG122
+* SQL Developer install (official): 
+
+[SQL developer home page: ](http://www.oracle.com/technetwork/developer-tools/sql-developer/overview/index.html)
+
+http://docs.oracle.com/database/sql-developer-17.2/RPTIG/installing-sql-developer.htm#RPTIG122
+
 * http://docs.oracle.com/database/sql-developer-4.2/RPTIG/installing-sql-developer.htm#RPTIG122
 * Docs: http://www.oracle.com/technetwork/developer-tools/sql-developer/documentation/index.html
 
@@ -36,7 +65,7 @@ a rather useful blog: http://tuhrig.de/3-ways-of-installing-oracle-xe-11g-on-ubu
 http://www.davidpashley.com/articles/oracle-install/
 
 Install guide... custom: https://community.oracle.com/thread/2229554
-https://askubuntu.com/questions/566734/how-to-install-oracle-11gr2-on-ubuntu-14-04
+BETTER LAYOUT: https://askubuntu.com/questions/566734/how-to-install-oracle-11gr2-on-ubuntu-14-04
 
 It seems that no version of Oracle DB is Ubuntu compatible *sigh*: http://docs.oracle.com/cd/E17781_01/install.112/e18802/toc.htm#CIHFEBGE
 
