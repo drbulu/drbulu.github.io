@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Installing Oracle SQL"
+title: "Installing Oracle SQL: Background Research"
 published: true
 series: Oracle SQL intro
 categories: [data management, database]
