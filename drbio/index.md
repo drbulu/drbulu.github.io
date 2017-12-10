@@ -35,7 +35,7 @@ Buah, S., <b>Mlalazi</b>, B., Khanna, H., Dale, J.L. and Mortimer, C.L. (2016). 
 
 ## Conference Papers and Posters
 
-Bulukani <b>Mlalazi</b>, Anthony Ebert, Paul Wu, Kerrie Mengersen (2017) Modular Shiny apps for reproducible data communication. Bayes on the Beach 2017, Gold Coast, Australia, 13-15 November 2017. <a href="https://botb2017.wordpress.com/program-presentations/">Poster presentation link</b>.
+Bulukani <b>Mlalazi</b>, Anthony Ebert, Paul Wu, Kerrie Mengersen (2017) Modular Shiny apps for reproducible data communication. Bayes on the Beach 2017, Gold Coast, Australia, 13-15 November 2017. <a href="https://botb2017.wordpress.com/program-presentations/">Poster presentation link</a>.
 
 James Dale, Harjeet Khanna, Wilberforce Tushemereirwe, Jean-Yves Paul, Priver Namanya, Jen Kleidon, Bulu <b>Mlalazi</b>, Cara Mortimer, Geofrey Arinaitwe, Robert Harding (2014) Biofortified Bananas: Tackling Vitamin A Deficiency in East Africa. The 29th International Horticultural Congress, Sustaining Lives, Livelihoods and Landscapes, Brisbane, Australia, 17-22 August 2014
 
