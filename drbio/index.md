@@ -5,7 +5,7 @@ title: Dr Bulu's Bio Page
 
 <p style="text-align: justify">
 
-Dr. Bulukani Mlalazi (<b><i>drbulu</i></b>) is a research scientist (molecular biologist) and data science enthusiast with a passion for applying data science techniques to important problems so that insights from data can drive wise and effective decisions.</p>
+Dr. Bulukani Mlalazi (<b><i>drbulu</i></b>) is a research scientist (molecular biologist) and data science enthusiast with a passion for applying data science techniques to important problems so that insights from data can drive wise and effective decisions. Outputs of this project includes a poster presentation at an international conference in 2017.</p>
 
 <p style="text-align: justify; text-indent: 50px;">
 Presently, <b><i>drbulu</i></b> is a Research Associate at the Queensland University of Technology (QUT) in the Australian Research Council (ARC) Centre of Excellence for Mathematical and Statistical Frontiers (ACEMS). The current project aims to incorporate statistical models developed at ACEMS into a data visualisation app.</p>
@@ -34,6 +34,8 @@ Buah, S., <b>Mlalazi</b>, B., Khanna, H., Dale, J.L. and Mortimer, C.L. (2016). 
 <b>Mlalazi</b>, Bulukani (2010) [Defining the role of phytoene synthase in carotenoid accumulation of high provitamin A bananas.](http://eprints.qut.edu.au/48847/) <b>PhD thesis</b>, Queensland University of Technology. 
 
 ## Conference Papers and Posters
+
+Bulukani <b>Mlalazi</b>, Anthony Ebert, Paul Wu, Kerrie Mengersen (2017) Modular Shiny apps for reproducible data communication. Bayes on the Beach 2017, Gold Coast, Australia, 13-15 November 2017. Poster presentation link: https://botb2017.wordpress.com/program-presentations/.
 
 James Dale, Harjeet Khanna, Wilberforce Tushemereirwe, Jean-Yves Paul, Priver Namanya, Jen Kleidon, Bulu <b>Mlalazi</b>, Cara Mortimer, Geofrey Arinaitwe, Robert Harding (2014) Biofortified Bananas: Tackling Vitamin A Deficiency in East Africa. The 29th International Horticultural Congress, Sustaining Lives, Livelihoods and Landscapes, Brisbane, Australia, 17-22 August 2014
 
