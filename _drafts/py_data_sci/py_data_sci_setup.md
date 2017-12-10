@@ -2,7 +2,7 @@
 layout: post
 title: "Setting up Python for data science"
 published: true
-series: PostgreSQL intro
+series: Python for data science
 categories: [data science]
 tags: [pyton, pythnon3, setup, SciPy stack, scikit-learn ]
 ---
